@@ -1,18 +1,48 @@
+@import '../../../../variables';
+
+.wrapper {
+  text-align: center;
+  color: $text-color-light;
+  padding-bottom: 2rem;
+}
+
+h1.title {
+  font-size: 50px;
+}
+
+label {
+  display: block;
+}
+
 .tab-menu {
   text-align: center;
+}
+
+.tab-button {
+  content: '';
+  width: 30px;
+  height: 30px;
+  transform: rotate(45deg);
+  transform-origin: center center;
+  border: 2px solid $graphic-element;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.tab-button:hover {
+  border-color: $text-color-light;
+}
+
+.tab-button.active {
+  transform: rotate(45deg) scale(1.2);
+  border-color: $text-color-light;
+  margin: 0 15px;
 }
 
 :host ::ng-deep .ui-button {
   margin: 20px 20px;
   font-size: 17px;
   width: 130px;
-}
-
-.title {
-  font-size: 50px;
-  color: white;
-  text-align: center;
-  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .spacing {
@@ -34,31 +64,31 @@
   height: 450px;
 }
 
-.card-content {
-  display: block;
-  height: 300px;
-  label {
-    font-size: 24px;
-  }
-  img {
-    width: 150px;
-    height: 150px;
-  }
-  i {
-    font-size: 130px;
-  }
+.task label {
+  font-size: 24px;
 }
 
-.required_items {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.task img {
+  height: 109px;
+}
+
+.required-items {
   label {
     font-size: 18px;
+    display: inline-block;
   }
+
   img {
     margin: 0 5px;
     height: 50px;
     width: 50px;
   }
+}
+
+.item {
+  display: inline-block;
+}
+
+.item img {
+  display: block;
 }

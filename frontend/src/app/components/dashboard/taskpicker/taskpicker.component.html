@@ -1,42 +1,46 @@
-<div class="title">
-  <label>{{ selectedTab }}</label>
-</div>
+<div class="wrapper">
+  <img src="../../../../assets/Fill_Icon.png" alt="placeholder" />
+  <h1 class="title">{{ selectedTab }}</h1>
 
-<div class="tab-menu">
-  <button
-    *ngFor="let item of items"
-    pButton
-    icon="{{ item.icon }}"
-    (click)="tabSelected(item.label)"
-  ></button>
-</div>
+  <div class="tab-menu">
+    <div
+      class="tab-button"
+      *ngFor="let item of items"
+      (click)="tabSelected(item.label)"
+      [ngClass]="{ active: selectedTab === item.label }"
+    ></div>
+  </div>
 
-<div>
-  <p-card *ngFor="let task of tasks" align="center">
-    <div class="card-content">
+  <app-separator type="triangle"></app-separator>
+  <ng-container *ngFor="let task of tasks; index as i">
+    <div class="task">
       <label>{{ task.name }}</label>
       <div class="spacing"></div>
-      <img src="../../../../assets/{{ task.icon }}" />
-      <div></div>
+      <img
+        [src]="'../../../../assets/' + task.icon"
+        alt="../../../../assets/Fill_Icon.png"
+      />
       <label>Duration: {{ task.duration }}</label>
-      <div></div>
       <label>Required:</label>
-      <div></div>
-      <p-scrollPanel>
-        <div class="required_items">
-          <div *ngFor="let reqItem of task.required">
-            <img src="../../../../assets/{{ reqItem.icon }}" />
-            <div></div>
-            <label>{{ reqItem.amount }}</label>
-          </div>
+      <div class="required-items">
+        <div class="item" *ngFor="let reqItem of task.required">
+          <img src="../../../../assets/{{ reqItem.icon }}" />
+          <label>{{ reqItem.amount }}</label>
         </div>
-      </p-scrollPanel>
-      <button
-        [disabled]="allRequirements(task.required)"
-        pButton
-        (click)="taskPicked(task)"
-        label="Select"
-      ></button>
+      </div>
+      <div>
+        <input
+          type="submit"
+          class="button"
+          value="INITIATE TASK"
+          [disabled]="allRequirements(task.required)"
+          (click)="taskPicked(task)"
+        />
+      </div>
     </div>
-  </p-card>
+
+    <ng-container *ngIf="i < task.required.length - 1">
+      <app-separator></app-separator>
+    </ng-container>
+  </ng-container>
 </div>

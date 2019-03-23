@@ -34,12 +34,13 @@
   </div>
 </p-sidebar>
 
-<p-button
-  (onClick)="returnToOverview()"
+<input
+  type="submit"
+  (click)="returnToOverview()"
   *ngIf="displayBack()"
-  class="back-Button"
-  icon="fa fa-angle-left"
-></p-button>
+  class="button button-back"
+  value=""
+/>
 
 <div class="dashboard">
   <router-outlet></router-outlet>
