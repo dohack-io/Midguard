@@ -1,5 +1,47 @@
-.separator {
+@import '../../../../variables';
+
+.wrapper {
+  padding-bottom: 2rem;
+}
+
+.progress-container {
+  position: relative;
+  height: 160px;
+}
+
+.progress-container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spacing {
   height: 20px;
+}
+
+.category {
+  text-align: center;
+  color: $text-color-light;
+}
+
+.category-icon {
+  margin-bottom: 1rem;
+}
+
+input.button {
+  background: url('../../../../assets/Button_Outline.png');
+  width: 258px;
+  height: 44px;
+  border: none;
+  color: $text-color-light;
+  outline: none;
+}
+
+input.button:active,
+input.button:hover {
+  background: url('../../../../assets/Button_Outline_Highlight.png');
+  outline: none;
 }
 
 :host ::ng-deep .ui-card {

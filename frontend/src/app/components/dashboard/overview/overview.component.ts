@@ -1,11 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {UserService} from '../../../services/userService';
-import {TaskService} from '../../../services/taskService';
-import {Subject} from 'rxjs';
-import {User} from '../../../entities/User';
-import {Task} from '../../../entities/Task';
-import {InventoryService} from "../../../services/inventoryService";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../../../services/userService';
+import { TaskService } from '../../../services/taskService';
+import { Subject } from 'rxjs';
+import { User } from '../../../entities/User';
+import { Task } from '../../../entities/Task';
+import { InventoryService } from '../../../services/inventoryService';
+
+const progressPath = '../../../../assets/progress_bar_{{number}}.png';
+const assetsPath = '../../../../assets/';
 
 @Component({
   selector: 'app-overview',
@@ -13,12 +16,12 @@ import {InventoryService} from "../../../services/inventoryService";
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-
-  constructor(private userService: UserService,
-              private taskService: TaskService,
-              private inventoryService: InventoryService,
-              private router: Router) {
-  }
+  constructor(
+    private userService: UserService,
+    private taskService: TaskService,
+    private inventoryService: InventoryService,
+    private router: Router
+  ) {}
 
   // Data Attributes
   user: User;
@@ -29,6 +32,9 @@ export class OverviewComponent implements OnInit {
   taskTime: number;
   taskStreamStop = new Subject<boolean>();
   rewardDisplay = false;
+  progressPath = '../../../../assets/progress_bar_0.png';
+  taskImagePath = '';
+  currentProgress = 0;
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
@@ -70,31 +76,42 @@ export class OverviewComponent implements OnInit {
   }
 
   startTask() {
-    this.taskService.initTaskTimer(this.task, this.user.taskStart)
-      .subscribe(
-        tick => {
-          this.taskTime = tick;
-          this.taskProgress = Math.floor(100 - (tick * 100) / this.task.duration);
-          if (this.taskProgress >= 100) {
-            this.taskStreamStop.next(true);
-          }
+    this.taskService
+      .initTaskTimer(this.task, this.user.taskStart)
+      .subscribe(tick => {
+        this.taskTime = tick;
+        this.taskProgress = Math.floor(100 - (tick * 100) / this.task.duration);
+        this.nextProgressBar();
+        this.taskImagePath = assetsPath + this.task.icon;
+        if (this.taskProgress >= 100) {
+          this.taskStreamStop.next(true);
         }
-      );
+      });
+  }
+
+  nextProgressBar(): void {
+    this.currentProgress = ++this.currentProgress % 8;
+    this.progressPath = progressPath.replace(
+      '{{number}}',
+      this.currentProgress.toString()
+    );
   }
 
   taskIsFinished(): boolean {
-    return this.task.duration <= this.taskService.getRestTime(this.user.taskStart);
+    return (
+      this.task.duration <= this.taskService.getRestTime(this.user.taskStart)
+    );
   }
 
   openRewardDialog(img: HTMLImageElement) {
     img.src = '../../../assets/treasure-chest.png';
-    setTimeout(()=> {
+    setTimeout(() => {
       this.rewardDisplay = true;
-      }, 1000);
+    }, 1000);
   }
 
   collectReward() {
-    for(let item of this.task.reward) {
+    for (let item of this.task.reward) {
       this.inventoryService.addItem(item);
     }
     this.user.taskId = 0;

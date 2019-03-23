@@ -1,0 +1,17 @@
+<ng-container *ngIf="type === 'square'; else separatorTriangle">
+  <ng-container *ngTemplateOutlet="separatorSquare"></ng-container>
+</ng-container>
+
+<ng-template #separatorSquare>
+  <div class="separator-container">
+    <div class="separator"></div>
+    <div class="separator-decorator-square"></div>
+  </div>
+</ng-template>
+
+<ng-template #separatorTriangle>
+  <div class="separator-container">
+    <div class="separator"></div>
+    <div class="separator-decorator-triangle"></div>
+  </div>
+</ng-template>
