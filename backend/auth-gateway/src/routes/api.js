@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const config = require('../../config').proxy.settings;
 
-let APIRoutes = function (passport) {
+module.exports = function (passport) {
 
     // Add passport middleware if proxy secure flag is set to true
     function auth(req, res, next, proxy) {
@@ -28,5 +28,3 @@ let APIRoutes = function (passport) {
     setupProxy();
     return router;
 };
-
-module.exports = APIRoutes();
