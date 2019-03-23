@@ -25,10 +25,10 @@ let UserModel = db.define('User', {
     },
     offeredItems: {
         type: Sequelize.STRING,
-        get() {
+        getOfferedItems() {
             return this.getDataValue('offeredItems').split(';')
         },
-        set(val) {
+        setOfferedItems(val) {
             this.setDataValue('offeredItems',val.join(';'))
         },
         defaultValue: ''
