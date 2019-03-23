@@ -1,9 +1,8 @@
-import {User} from '../entities/User';
+import { User } from '../entities/User';
 import u1 from '../MockData/User.json';
-import {Observable, of, Subject} from "rxjs/index";
+import { Observable, of, Subject } from 'rxjs/index';
 
 export class UserService {
-
   private user: User = u1[0];
   private userAnnouncer: Subject<String>;
 
@@ -13,7 +12,7 @@ export class UserService {
   }
 
   getUserAnnouncer(): Subject<String> {
-    if(this.userAnnouncer == null) {
+    if (this.userAnnouncer == null) {
       this.userAnnouncer = new Subject<String>();
     }
     return this.userAnnouncer;
@@ -24,14 +23,13 @@ export class UserService {
   }
 
   getUserById(id: number): User {
-    return u1[id-1];
+    return u1[id - 1];
   }
 
   setTask(taskId: number) {
     this.user.taskId = taskId;
     this.user.taskStart = new Date();
-    if(taskId != 0)
-      this.userAnnouncer.next('New Task started');
+    if (taskId != 0) this.userAnnouncer.next('New Task started');
   }
 
   creditScore(score: number) {
@@ -39,7 +37,7 @@ export class UserService {
   }
 
   removeProfileItem(id: number) {
-    this.user.profileItems.splice(this.user.profileItems.indexOf(id),1);
+    this.user.profileItems.splice(this.user.profileItems.indexOf(id), 1);
   }
 
   addProfileItem(id: number) {

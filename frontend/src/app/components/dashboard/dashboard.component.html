@@ -1,34 +1,44 @@
 <div class="top-Bar">
   <div class="burger-menu">
-    <a (click)="displaySB = true;">
+    <a (click)="displaySB = true">
       <i class="fa fa-bars"></i>
     </a>
   </div>
   <div class="credit-counter">
-    <label>$: {{user.credits}}</label>
+    <label>$: {{ user.credits }}</label>
   </div>
 </div>
 
 <p-sidebar [(visible)]="displaySB" styleClass="ui-sidebar-md">
   <div class="search-bar">
-    <input placeholder=" Person Search" type="text" pInputText [(ngModel)]="searchStr" (keyup.enter)="search()"/>
+    <input
+      placeholder=" Person Search"
+      type="text"
+      pInputText
+      [(ngModel)]="searchStr"
+      (keyup.enter)="search()"
+    />
   </div>
-  <img src="../../../assets/{{user.icon}}">
+  <img src="../../../assets/{{ user.icon }}" />
   <div class="separator"></div>
-  <label>{{user.name}}</label>
+  <label>{{ user.name }}</label>
   <div class="separator"></div>
   <p-button label="Public Profile" (onClick)="openPublicProfile()"></p-button>
   <div class="mid-content">
-    <label>Level: {{user.level}}</label>
+    <label>Level: {{ user.level }}</label>
     <div class="separator"></div>
-    <label>Skill Points: {{user.skillPoints}}</label>
+    <label>Skill Points: {{ user.skillPoints }}</label>
     <div class="separator"></div>
     <p-button label="Skill Tree" (onClick)="openSkillTree()"></p-button>
   </div>
 </p-sidebar>
 
-<p-button (onClick)="returnToOverview()" *ngIf="displayBack()"
-          class="back-Button" icon="fa fa-angle-left"></p-button>
+<p-button
+  (onClick)="returnToOverview()"
+  *ngIf="displayBack()"
+  class="back-Button"
+  icon="fa fa-angle-left"
+></p-button>
 
 <div class="dashboard">
   <router-outlet></router-outlet>

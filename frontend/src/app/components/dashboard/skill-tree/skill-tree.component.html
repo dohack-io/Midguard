@@ -3,23 +3,28 @@
 </div>
 
 <div class="tab-selector">
-  <p-tabMenu #tabMenu [model]="tabs" [activeItem]="selectedTab" (click)="tabChanged()"></p-tabMenu>
+  <p-tabMenu
+    #tabMenu
+    [model]="tabs"
+    [activeItem]="selectedTab"
+    (click)="tabChanged()"
+  ></p-tabMenu>
   <div class="content">
     <div class="tier" *ngFor="let tier of profSkills">
       <div class="tier-header">
-        <label>Tier {{tier[0].tier}}</label>
+        <label>Tier {{ tier[0].tier }}</label>
       </div>
       <div class="tier-content">
         <div class="item" *ngFor="let skill of tier">
           <p-card>
             <p-header>
-              <label>{{skill.name}}</label>
+              <label>{{ skill.name }}</label>
             </p-header>
             <div class="card-content">
-              <img src="../../../../assets/{{skill.icon}}">
+              <img src="../../../../assets/{{ skill.icon }}" />
             </div>
             <p-footer>
-              <label>{{skill.active}}</label>
+              <label>{{ skill.active }}</label>
             </p-footer>
           </p-card>
         </div>

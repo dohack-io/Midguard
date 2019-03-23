@@ -1,15 +1,23 @@
 <div class="tile-container">
   <div class="x-row" *ngFor="let y of yLength">
-    <div *ngFor="let x of xLength" class="tile" id="t{{x}}{{y}}">
-      <label id="L{{x}}{{y}}">{{getNumberOfTile(x,y)}}</label>
-      <div *ngIf="enabledTiles[y][x]" class="tile-overlay" id="o{{x}}{{y}}" (click)="disableTile(x,y)"></div>
+    <div *ngFor="let x of xLength" class="tile" id="t{{ x }}{{ y }}">
+      <label id="L{{ x }}{{ y }}">{{ getNumberOfTile(x, y) }}</label>
+      <div
+        *ngIf="enabledTiles[y][x]"
+        class="tile-overlay"
+        id="o{{ x }}{{ y }}"
+        (click)="disableTile(x, y)"
+      ></div>
     </div>
   </div>
 </div>
 
-<p-dialog [(visible)]="finishDisplay" (onHide)="finish()"
-          [style]="{width: '200px', height: '200px'}">
+<p-dialog
+  [(visible)]="finishDisplay"
+  (onHide)="finish()"
+  [style]="{ width: '200px', height: '200px' }"
+>
   <div class="result">
-    <label>{{result}}</label>
+    <label>{{ result }}</label>
   </div>
 </p-dialog>

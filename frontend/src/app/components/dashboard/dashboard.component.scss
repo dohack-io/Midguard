@@ -1,7 +1,9 @@
+@import '../../../variables';
+
 .top-Bar {
   height: 60px;
   width: 100%;
-  background-color: black;
+  background-color: $top-bar-background;
   position: fixed;
   top: 0;
   left: 0;
@@ -30,17 +32,17 @@
 
 .credit-counter {
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 5px;
 
-  img{
+  img {
     width: 30px;
     height: 30px;
   }
 
   label {
-    color: white;
-    font-size: 24px;
+    color: $text-color;
+    font-size: 42px;
   }
 }
 

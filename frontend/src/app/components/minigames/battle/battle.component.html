@@ -1,36 +1,45 @@
 <div class="battle-container">
   <div class="enemy-info">
-    <label>{{enemy.name}}</label>
+    <label>{{ enemy.name }}</label>
   </div>
   <div class="card-placeholder enemy_portrait">
-    <img src="../../../../assets/{{enemy.icon}}"/>
+    <img src="../../../../assets/{{ enemy.icon }}" />
   </div>
   <div class="hp-ap-container">
     <div>
-      <label>HP: {{enemyCurHp}}/{{enemy.hp}}</label>
+      <label>HP: {{ enemyCurHp }}/{{ enemy.hp }}</label>
     </div>
     <div>
-      <p-progressBar [value]="(enemyCurHp*100)/enemy.hp" [showValue]="false"></p-progressBar>
+      <p-progressBar
+        [value]="(enemyCurHp * 100) / enemy.hp"
+        [showValue]="false"
+      ></p-progressBar>
       <div class="block_overlay" *ngIf="enemyBlock > 0">
-        <label>{{enemyBlock}}</label>
+        <label>{{ enemyBlock }}</label>
       </div>
     </div>
     <div class="perception_container">
-      <label>Next Action: {{enemyPerception.move}}</label>
+      <label>Next Action: {{ enemyPerception.move }}</label>
     </div>
   </div>
 
   <div class="card-battle-container">
     <div class="card-placeholder">
-      <label *ngIf="curPlayerMove.value != 0">{{curPlayerMove.value}}</label>
-      <img *ngIf='curPlayerMove.src != ""' src="../../../../assets/{{curPlayerMove.src}}"/>
+      <label *ngIf="curPlayerMove.value != 0">{{ curPlayerMove.value }}</label>
+      <img
+        *ngIf="curPlayerMove.src != ''"
+        src="../../../../assets/{{ curPlayerMove.src }}"
+      />
     </div>
     <div class="outcome_container">
-      <img *ngIf='outcome !== ""' src="{{outcome}}">
+      <img *ngIf="outcome !== ''" src="{{ outcome }}" />
     </div>
     <div class="card-placeholder">
-      <label *ngIf="curEnemyMove.value != 0">{{curEnemyMove.value}}</label>
-      <img *ngIf='curEnemyMove.src != ""' src="../../../../assets/{{curEnemyMove.src}}"/>
+      <label *ngIf="curEnemyMove.value != 0">{{ curEnemyMove.value }}</label>
+      <img
+        *ngIf="curEnemyMove.src != ''"
+        src="../../../../assets/{{ curEnemyMove.src }}"
+      />
     </div>
   </div>
   <div class="description_container">
@@ -39,34 +48,41 @@
   </div>
   <div class="hp-ap-container">
     <div>
-      <label>HP: {{playerCurHp}}/{{player.hp}}</label>
+      <label>HP: {{ playerCurHp }}/{{ player.hp }}</label>
     </div>
     <div>
-      <p-progressBar [value]="(playerCurHp*100)/player.hp" [showValue]="false"></p-progressBar>
+      <p-progressBar
+        [value]="(playerCurHp * 100) / player.hp"
+        [showValue]="false"
+      ></p-progressBar>
       <div class="block_overlay" *ngIf="playerBlock > 0">
-        <label>{{playerBlock}}</label>
+        <label>{{ playerBlock }}</label>
       </div>
     </div>
     <div>
-      <label>AP: {{playerCurAp}}</label>
+      <label>AP: {{ playerCurAp }}</label>
     </div>
   </div>
 
-
-  <p-scrollPanel [style]="{width: '100%', height: '150px'}">
+  <p-scrollPanel [style]="{ width: '100%', height: '150px' }">
     <div class="card-selection-container">
       <div *ngFor="let card of playerHand" class="card-placeholder">
-        <label>{{card.value}}</label>
-        <img src="../../../../assets/{{card.src}}" (click)="cardSelected(card)"/>
+        <label>{{ card.value }}</label>
+        <img
+          src="../../../../assets/{{ card.src }}"
+          (click)="cardSelected(card)"
+        />
       </div>
     </div>
   </p-scrollPanel>
-
 </div>
 
-<p-dialog [(visible)]="showEndDialog" (onHide)="finish()"
-          [style]="{width: '200px', height: '200px'}">
+<p-dialog
+  [(visible)]="showEndDialog"
+  (onHide)="finish()"
+  [style]="{ width: '200px', height: '200px' }"
+>
   <div class="result">
-    <label>{{resultText}}</label>
+    <label>{{ resultText }}</label>
   </div>
 </p-dialog>
