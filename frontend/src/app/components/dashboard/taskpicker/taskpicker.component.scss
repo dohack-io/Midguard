@@ -65,7 +65,14 @@ label {
 }
 
 .task label {
+  color: $graphic-element;
   font-size: 24px;
+}
+
+.task label.task-title,
+.task label span {
+  color: $text-color-light;
+  font-size: 34px;
 }
 
 .task img {
@@ -74,7 +81,8 @@ label {
 
 .required-items {
   label {
-    font-size: 18px;
+    color: $text-color-light;
+    font-size: 34px;
     display: inline-block;
   }
 
