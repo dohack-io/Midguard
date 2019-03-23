@@ -1,12 +1,10 @@
-'use strict';
-
 const httpProxy = require('express-http-proxy');
 
 let config = module.exports;
 
 config.db = {
     user: 'root',
-    password: 'root',
+    password: '',
     name: 'auth_gateway'
 };
 
@@ -21,12 +19,13 @@ config.keys = {
 };
 
 config.server = {
-    port: 8196,
+    port: 1337,
     url: "localhost"
 };
 
 config.proxy = {
     settings: [
+        /*
         {
             endpointHook: "/sampleUnsecure",
             proxySetting: httpProxy('http://your.host.com'),
@@ -47,5 +46,6 @@ config.proxy = {
             proxySetting: httpProxy('http://your.host.com'),
             secure: true
         }
+        */
     ]
 };

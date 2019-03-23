@@ -4,7 +4,7 @@ let JWTStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 
 let UserLocal = require('./../models/userLocal'),
-    config = require('./../config');
+    config = require('../../config');
 
 // Hooks the JWT Strategy.
 function hookStrategies(passport) {
