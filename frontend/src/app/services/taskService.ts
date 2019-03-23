@@ -1,9 +1,10 @@
-import { interval, Observable, Subject } from 'rxjs/index';
-import { Task } from '../entities/Task';
-import { map, takeUntil } from 'rxjs/internal/operators';
+import {interval, Observable, Subject} from 'rxjs/index';
+import {Task} from '../entities/Task';
+import {map, takeUntil} from 'rxjs/internal/operators';
 import jsonTasks from '../MockData/Task.json';
 
 export class TaskService {
+
   private allTasks: Task[] = jsonTasks;
 
   private taskTimer: Observable<number>;
@@ -16,23 +17,20 @@ export class TaskService {
     const serverTime = this.getServerTime();
     this.taskCompleted.next(false);
     this.taskCompleted = new Subject<boolean>();
-    this.taskTimer = interval(1000).pipe(
-      takeUntil(this.taskCompleted),
-      map(tick => {
-        let restTime = Number(
-          (
-            task.duration -
-            this.timeReduction -
-            (serverTime.getTime() / 1000 - start.getTime() / 1000 + tick + 1)
-          ).toFixed(0)
-        );
-        if (restTime <= 0) {
-          this.taskCompleted.next(false);
-          this.taskFinished(task.id);
-        }
-        return restTime;
-      })
-    );
+    this.taskTimer = interval(1000)
+      .pipe(
+        takeUntil(this.taskCompleted),
+        map(tick => {
+          const restTime = Number(
+            (task.duration - this.timeReduction - (serverTime.getTime() / 1000 - start.getTime() / 1000 + tick + 1))
+              .toFixed(0));
+          if (restTime <= 0) {
+            this.taskCompleted.next(false);
+            this.taskFinished(task.id);
+          }
+          return restTime;
+        })
+      );
     return this.taskTimer;
   }
 
@@ -49,8 +47,10 @@ export class TaskService {
   }
 
   getTaskById(taskId: number): Task {
-    for (let task of this.allTasks) {
-      if (task.id == taskId) return task;
+    for (const task of this.allTasks) {
+      if (task.id === taskId) {
+        return task;
+      }
     }
     return null;
   }
@@ -86,10 +86,6 @@ export class TaskService {
   }
 
   getRestTime(taskStart: Date): number {
-    return Math.floor(
-      this.getServerTime().getTime() / 1000 -
-        taskStart.getTime() / 1000 +
-        this.timeReduction
-    );
+    return Math.floor(this.getServerTime().getTime() / 1000 - taskStart.getTime() / 1000 + this.timeReduction);
   }
 }

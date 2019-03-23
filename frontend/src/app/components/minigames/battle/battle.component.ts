@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {Card} from "./Card.entity";
-import {BattleService} from "../../../services/battleService";
-import {BattleUnit} from "../../../entities/BattleUnit";
+import {Router} from '@angular/router';
+import {Card} from './Card.entity';
+import {BattleService} from '../../../services/battleService';
+import {BattleUnit} from '../../../entities/BattleUnit';
 
-const arrowLeftImg = "../../../../assets/arrow-left.png";
-const arrowRightImg = "../../../../assets/arrow-right.png";
-const arrowEvenImg = "../../../../assets/arrow-even.png";
+const arrowLeftImg = '../../../../assets/arrow-left.png';
+const arrowRightImg = '../../../../assets/arrow-right.png';
+const arrowEvenImg = '../../../../assets/arrow-even.png';
 
 @Component({
   selector: 'app-battle',
@@ -35,9 +35,9 @@ export class BattleComponent implements OnInit {
   curEnemyMove: Card;
 
 
-  outcome = "";
+  outcome = '';
   showEndDialog = false;
-  resultText = "";
+  resultText = '';
 
   ngOnInit() {
     this.enemy = this.battleService.getEnemy();
@@ -52,26 +52,26 @@ export class BattleComponent implements OnInit {
   }
 
   public cardSelected(card: Card) {
-    if (this.playerCurAp == 0) return;
+    if (this.playerCurAp === 0) return;
     this.playerCurAp--;
-    this.setImage("Player", card);
-    this.outcome = "";
+    this.setImage('Player', card);
+    this.outcome = '';
     this.playerHand.splice(this.playerHand.indexOf(card), 1);
     switch (card.move) {
-      case "Attack":
+      case 'Attack':
         this.outcome = arrowRightImg;
         this.enemyBlock -= card.value;
         if (this.enemyBlock < 0) {
           this.enemyCurHp += this.enemyBlock;
           this.enemyBlock = 0;
         }
-        if(this.enemyCurHp <= 0) {
+        if (this.enemyCurHp <= 0) {
           this.enemyCurHp = 0;
           this.showEndDialog = true;
-          this.resultText = "Win";
+          this.resultText = 'Win';
         }
         break;
-      case "Defense":
+      case 'Defense':
         this.outcome = arrowEvenImg;
         this.playerBlock += card.value;
         break;
@@ -86,35 +86,35 @@ export class BattleComponent implements OnInit {
   private enemyTurn() {
     this.curEnemyMove = this.enemyPerception;
     this.enemyPerception = this.battleService.getAction(this.enemy);
-    this.setImage("Enemy", this.curEnemyMove);
-    this.setImage("Player", this.getEmptyCard());
+    this.setImage('Enemy', this.curEnemyMove);
+    this.setImage('Player', this.getEmptyCard());
     switch (this.curEnemyMove.move) {
-      case "Attack":
+      case 'Attack':
         this.outcome = arrowLeftImg;
         this.playerBlock -= this.curEnemyMove.value;
         if (this.playerBlock < 0) {
           this.playerCurHp += this.playerBlock;
           this.playerBlock = 0;
         }
-        if(this.playerCurHp <= 0) {
+        if (this.playerCurHp <= 0) {
           this.playerCurHp = 0;
           this.showEndDialog = true;
-          this.resultText = "Loose";
+          this.resultText = 'Loose';
         }
         break;
-      case "Defense":
+      case 'Defense':
         this.outcome = arrowEvenImg;
         this.enemyBlock += this.curEnemyMove.value;
         break;
     }
-    setTimeout(() =>this.playerTurn(), 1500 );
+    setTimeout(() => this.playerTurn(), 1500);
   }
 
   private playerTurn() {
     this.playerBlock = 0;
     this.playerCurAp = this.player.ap;
     this.playerHand = this.battleService.getHand(this.player);
-    this.outcome = "";
+    this.outcome = '';
     this.curEnemyMove = this.getEmptyCard();
   }
 
@@ -122,8 +122,8 @@ export class BattleComponent implements OnInit {
   private getEmptyCard(): Card {
     return {
       value: 0,
-      move: "",
-      src: ""
+      move: '',
+      src: ''
     };
   }
 
