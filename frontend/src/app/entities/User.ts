@@ -6,8 +6,7 @@ export class User {
   communityId: number;
   taskId: number;
   taskStart: Date;
-  inventoryId: number;
   credits: number;
   skillPoints: number;
-  profileItems: number[];
+  offeredItems: number[];
 }

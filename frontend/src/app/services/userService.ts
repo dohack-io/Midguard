@@ -29,6 +29,7 @@ export class UserService {
   getUser(): User {
     // TODO: Logged in User Object from server
     // if not set use localstorage
+    // setzte attribute die nicht vom server gesetzt sind
     return this.user;
   }
 
@@ -50,11 +51,11 @@ export class UserService {
   }
 
   removeProfileItem(id: number) {
-    this.user.profileItems.splice(this.user.profileItems.indexOf(id), 1);
+    this.user.offeredItems.splice(this.user.offeredItems.indexOf(id), 1);
   }
 
   addProfileItem(id: number) {
-    this.user.profileItems.push(id);
+    this.user.offeredItems.push(id);
   }
 
   getUserIdByName(searchStr: string) {
