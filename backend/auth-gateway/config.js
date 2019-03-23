@@ -25,6 +25,7 @@ config.server = {
 
 config.proxy = {
     settings: [
+        /*
         {
             endpointHook: "/sampleUnsecure",
             proxySetting: httpProxy('http://your.host.com'),
@@ -45,5 +46,6 @@ config.proxy = {
             proxySetting: httpProxy('http://your.host.com'),
             secure: true
         }
+        */
     ]
 };
