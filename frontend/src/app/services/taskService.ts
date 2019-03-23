@@ -1,7 +1,7 @@
 import {interval, Observable, Subject} from 'rxjs/index';
 import {Task} from '../entities/Task';
 import {map, takeUntil} from 'rxjs/internal/operators';
-import jsonTasks from "../MockData/Task.json";
+import jsonTasks from '../MockData/Task.json';
 
 export class TaskService {
 
