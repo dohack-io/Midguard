@@ -1,0 +1,66 @@
+.tile-container {
+  width: 70vw;
+  margin: auto;
+  .x-row {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    .tile-overlay {
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      background-color: darkgray;
+      z-index: 900;
+      border: 1px solid grey;
+    }
+    .tile {
+      height: 2.5vw;
+      width: 2.5vw;
+      background-color: black;
+      border: 1px solid grey;
+      label {
+        float: right;
+        color: white;
+        font-size: 1.2em;
+      }
+    }
+    @media only screen and (max-width: 1450px) {
+      .tile {
+        height: 3vw;
+        width: 3vw;
+      }
+    }
+    @media only screen and (max-width: 1050px) {
+      .tile {
+        height: 4vw;
+        width: 4vw;
+      }
+    }
+    @media only screen and (max-width: 900px) {
+      .tile {
+        height: 5vw;
+        width: 5vw;
+      }
+    }
+    @media only screen and (max-width: 750px) {
+      .tile {
+        height: 6vw;
+        width: 6vw;
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      .tile {
+        height: 7vw;
+        width: 7vw;
+      }
+    }
+  }
+}
+
+.result {
+  label {
+    font-size: 3em;
+  }
+  width: fit-content;
+  margin: auto;
+}

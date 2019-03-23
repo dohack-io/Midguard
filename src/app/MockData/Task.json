@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Create Hammer",
+    "reward": [
+      {"id": 4, "name": "Hammer", "amount": 1, "icon": "hammer.png"}
+    ],
+    "required": [
+      {"id": 3, "name": "Wood", "amount": 3, "icon": "wood.png"},
+      {"id": 2, "name": "Metal", "amount": 1, "icon": "metal.png"}
+    ],
+    "duration": 50,
+    "icon": "hammer.png",
+    "profession": "Provider"
+  },
+  {
+    "id": 2,
+    "name": "Create Weapon",
+    "reward": [
+      {"id": 8, "name": "Weapon", "amount": 1, "icon": "weapon.png"}
+    ],
+    "required": [
+      {"id": 6, "name": "Screws", "amount": 3, "icon": "screw.png"},
+      {"id": 2, "name": "Metal", "amount": 10, "icon": "metal.png"}
+    ],
+    "duration": 50,
+    "icon": "weapon.png",
+    "profession": "Provider"
+  }
+]

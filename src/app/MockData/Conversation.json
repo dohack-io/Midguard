@@ -1,0 +1,43 @@
+[{
+  "id": 1,
+  "partnerId1": 1,
+  "partnerId2": 5,
+  "partnerName": "Paul",
+  "messages": [
+    {
+      "id": 1,
+      "authorId": 1,
+      "content": "Hey how is it going?"
+    },{
+      "id": 2,
+      "authorId": 2,
+      "content": "Good how are you?"
+    },{
+      "id": 3,
+      "authorId": 1,
+      "content": "Very Good! Just found a new Item!"
+    },{
+      "id": 4,
+      "authorId": 2,
+      "content": "Awesome! What is it? One of the new ones the patched in?"
+    },{
+      "id": 5,
+      "authorId": 1,
+      "content": "JK Just a normal piece of wood like every day..."
+    },{
+      "id": 6,
+      "authorId": 2,
+      "content": "Poor you..."
+    },{
+      "id": 7,
+      "authorId": 1,
+      "content": "Well... What must that must!"
+    },{
+      "id": 8,
+      "authorId": 2,
+      "content": "Ye u r right! We are all sitting in one boat"
+    }
+  ],
+  "unread": true,
+  "timestamp": null
+}]

@@ -1,0 +1,49 @@
+#map {
+  height: 85vh;
+  width: 90%;
+  margin: auto;
+}
+
+#tileBtn {
+  position: fixed;
+  top: calc(15vh + 50px);
+  left: 2.5vw;
+  z-index: 990;
+}
+
+.joystick {
+  position: fixed;
+  top: 30vh;
+  left: 1vw;
+  z-index: 990;
+}
+
+#northBtn {
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+#eastBtn{
+  margin-left: 60px;
+}
+
+#southBtn {
+  margin-top: 10px;
+  margin-left: 50px;
+}
+
+#westBtn {
+}
+
+#debugCheckbox {
+  position: fixed;
+  bottom: 10vh;
+  left: 3vw;
+}
+
+.scan-Button {
+  position: fixed;
+  top: 100px;
+  right: 2vw;
+  z-index: 990;
+}

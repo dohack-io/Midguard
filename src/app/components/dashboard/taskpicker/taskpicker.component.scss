@@ -1,0 +1,64 @@
+.tab-menu {
+  text-align: center;
+}
+
+:host ::ng-deep .ui-button {
+  margin: 20px 20px;
+  font-size: 17px;
+  width: 130px;
+}
+
+.title {
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.separator {
+  height: 15px;
+}
+
+:host ::ng-deep .ui-card {
+  display: inline-flex;
+  margin: 2.5%;
+  width: 45%;
+  @media screen and (max-width: 800px) {
+    width: 80%;
+    margin: 10%;
+  }
+}
+
+:host ::ng-deep .ui-card-body {
+  width: 100%;
+  height: 450px;
+}
+
+.card-content {
+  display: block;
+  height: 300px;
+  label {
+    font-size: 24px;
+  }
+  img {
+    width: 150px;
+    height: 150px;
+  }
+  i{
+    font-size: 130px;
+  }
+}
+
+.required_items{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  label {
+    font-size: 18px;
+  }
+  img{
+    margin: 0 5px;
+    height: 50px;
+    width: 50px;
+  }
+}

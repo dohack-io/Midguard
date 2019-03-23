@@ -1,0 +1,88 @@
+.top-Bar {
+  height: 60px;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.burger-menu {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+
+  a {
+    width: 60px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    font-size: 24px;
+  }
+
+  a:hover {
+    background-color: grey;
+  }
+}
+
+.credit-counter {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+
+  img{
+    width: 30px;
+    height: 30px;
+  }
+
+  label {
+    color: white;
+    font-size: 24px;
+  }
+}
+
+p-sidebar {
+  text-align: center;
+  label {
+    font-size: 30px;
+  }
+
+  img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background-color: grey;
+    margin-top: 3em;
+  }
+
+  .mid-content {
+    margin-top: 10vh;
+  }
+}
+
+.dashboard {
+  width: 90%;
+  margin: 5em auto auto;
+}
+
+.back-Button {
+  position: fixed;
+  top: 100px;
+  left: 2vw;
+  z-index: 990;
+}
+
+.separator {
+  margin-top: 20px;
+}
+
+.search-bar {
+  text-align: center;
+  margin-top: 30px;
+  input {
+    border: 1px solid green;
+  }
+}

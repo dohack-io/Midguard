@@ -1,0 +1,59 @@
+<div class="title">
+  <label>Contracts</label>
+</div>
+<div class="tab-selector">
+  <p-tabMenu #tabMenu [model]="tabs" [activeItem]="selectedTab" (click)="tabChanged()"></p-tabMenu>
+</div>
+<div class="column-title">
+  <div>
+    <label>Request:</label>
+  </div>
+  <div>
+    <label>Supply:</label>
+  </div>
+</div>
+<div class="received-list" *ngIf="selectedTab == tabs[0]">
+  <div *ngFor="let contract of receivedContracts" (click)="openContract(contract)"
+       [className]="checkAccepted(contract)">
+    <div class="profile-picture">
+      <img src="../../../../assets/person_placeholder.png">
+    </div>
+    <div class="column-divider"></div>
+    <div class="items">
+      <div class="item" *ngFor="let item of contract.requestedItems">
+        <img src="../../../assets/{{item.icon}}">
+        <label>{{item.amount}}</label>
+      </div>
+    </div>
+    <div class="column-divider"></div>
+    <div class="items">
+      <div class="item" *ngFor="let item of contract.providedItems">
+        <img src="../../../assets/{{item.icon}}">
+        <label>{{item.amount}}</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="placed-list" *ngIf="selectedTab == tabs[1]">
+  <div *ngFor="let contract of placedContracts" (click)="openContract(contract)"
+       [className]="checkAccepted(contract)">
+    <div class="profile-picture">
+      <img src="../../../../assets/person_placeholder.png">
+    </div>
+    <div class="column-divider"></div>
+    <div class="items">
+      <div class="item" *ngFor="let item of contract.requestedItems">
+        <img src="../../../assets/{{item.icon}}">
+        <label>{{item.amount}}</label>
+      </div>
+    </div>
+    <div class="column-divider"></div>
+    <div class="items">
+      <div class="item" *ngFor="let item of contract.providedItems">
+        <img src="../../../assets/{{item.icon}}">
+        <label>{{item.amount}}</label>
+      </div>
+    </div>
+  </div>
+</div>

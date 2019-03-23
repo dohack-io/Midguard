@@ -1,0 +1,26 @@
+[{
+  "id": 1,
+  "name": "MaxMusterMaster",
+  "icon": "person_placeholder.png",
+  "level": 1,
+  "communityId": 0,
+  "taskId": 0,
+  "taskStart": null,
+  "inventoryId": 1,
+  "credits": 23,
+  "skillPoints": 1,
+  "profileItems": [2]
+},
+{
+"id": 2,
+"name": "MadMaxi123",
+"icon": "person_placeholder.png",
+"level": 5,
+"communityId": 0,
+"taskId": 0,
+"taskStart": null,
+"inventoryId": 7,
+"credits": 23,
+"skillPoints": 1,
+"profileItems": [4]
+}]

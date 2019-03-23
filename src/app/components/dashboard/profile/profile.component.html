@@ -1,0 +1,65 @@
+<div class="title">
+  <label>Profile</label>
+</div>
+<div class="profile-picture">
+  <img src="../../../assets/{{user.icon}}">
+</div>
+<div class="player-info">
+  <label>{{user.name}}</label>
+</div>
+<div class="player-info">
+  <label>Level: {{user.level}}</label>
+</div>
+<div class="player-info" *ngIf="profileItems.length != 0 || edit">
+  <label>Trading:</label>
+</div>
+<div class="profile-items">
+  <div class="item" *ngFor="let item of profileItems">
+    <p-card>
+      <p-header>
+        <label>{{item.name}}</label>
+      </p-header>
+      <div class="card-content">
+        <p-button icon="fa fa-times" styleClass="ui-button-danger" *ngIf="edit" (onClick)="removeProfileItem(item)"></p-button>
+        <img src="../../../../assets/{{item.icon}}">
+      </div>
+    </p-card>
+  </div>
+  <div class="item" (click)="openAddItemDialog()" *ngIf="edit">
+    <p-card>
+      <p-header>
+        <label>Add Item</label>
+      </p-header>
+      <div class="card-content">
+        <div class="plus">
+        <label>+</label>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
+<div class="contact" *ngIf="!isOwnProfile()">
+  <p-button label="Message" (onClick)="sendMessage()"></p-button>
+  <p-button label="Contract" (onClick)="sendContract()"></p-button>
+</div>
+<div class="contact" *ngIf="isOwnProfile()">
+  <p-button label="Edit" (onClick)="editProfile()"></p-button>
+</div>
+
+<p-dialog header="Add Profile Item" [(visible)]="addItemDialog"
+          [style]="{width: '60vw', height: '60vh'}">
+  <div class="addItemDialog-content">
+    <div class="search-bar">
+      <input placeholder="Search" type="text" pInputText [(ngModel)]="searchStr" (ngModelChange)="search()"/>
+    </div>
+    <div class="profile-items">
+      <div class="item" *ngFor="let item of allDisplayedItems" (click)="addProfileItem(item)">
+        <p-card>
+          <div class="card-content">
+            <img src="../../../../assets/{{item.icon}}">
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</p-dialog>

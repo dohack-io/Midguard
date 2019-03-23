@@ -1,0 +1,40 @@
+[{
+  "id": 1,
+  "creatorId": 1,
+  "receiverId": 2,
+  "providedItems": [
+    {"id": 3, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 2, "name": "Metal", "amount": 1, "icon": "metal.png"}
+  ],
+  "requestedItems": [
+    {"id": 4, "name": "Hammer", "amount": 2, "icon": "hammer.png"}
+  ],
+  "reward": 100,
+  "accepted": false
+},{
+  "id": 2,
+  "creatorId": 2,
+  "receiverId": 1,
+  "providedItems": [
+    {"id": 3, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 2, "name": "Metal", "amount": 2, "icon": "metal.png"}
+  ],
+  "requestedItems": [
+    {"id": 4, "name": "Hammer", "amount": 1, "icon": "hammer.png"}
+  ],
+  "reward": 100,
+  "accepted": false
+},{
+  "id": 3,
+  "creatorId": 1,
+  "receiverId": 2,
+  "providedItems": [
+    {"id": 3, "name": "Wood", "amount": 10, "icon": "wood.png"},
+    {"id": 2, "name": "Metal", "amount": 5, "icon": "metal.png"}
+  ],
+  "requestedItems": [
+    {"id": 4, "name": "Hammer", "amount": 3, "icon": "hammer.png"}
+  ],
+  "reward": 120,
+  "accepted": false
+}]

@@ -1,0 +1,83 @@
+.title {
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  p-button {
+    position: absolute;
+    top: 70px;
+    right: 2vw;
+  }
+}
+
+.search-bar {
+  text-align: center;
+  margin-top: 30px;
+  input {
+    border: 1px solid green;
+  }
+}
+
+.tab-menu {
+  text-align: center;
+  p-button {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+}
+
+.inventory-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+p-card {
+  margin: 20px;
+}
+
+:host ::ng-deep .ui-card {
+  width: 150px;
+}
+@media only screen and (max-width: 1450px) {
+  :host ::ng-deep .ui-card {
+    width: 125px;
+  }
+}
+
+:host ::ng-deep .ui-card-body {
+  width: 100%;
+}
+
+.card-content {
+  display: block;
+  text-align: center;
+  height: 59px;
+  img {
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+p-card label {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+}
+
+.number-picker {
+  display: inline-block;
+  float: right;
+}
+
+:host ::ng-deep .ui-dialog {
+  max-width: 300px;
+}
+
+:host ::ng-deep .ui-dialog .ui-dialog-titlebar {
+  text-align: center;
+}

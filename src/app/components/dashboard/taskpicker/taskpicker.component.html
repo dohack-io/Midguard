@@ -1,0 +1,35 @@
+<div class="title">
+  <label>{{selectedTab}}</label>
+</div>
+
+<div class="tab-menu">
+  <button *ngFor="let item of items"
+          pButton
+          icon="{{item.icon}}"
+          (click)="tabSelected(item.label)"></button>
+</div>
+
+<div>
+  <p-card *ngFor="let task of tasks" align="center">
+    <div class="card-content">
+      <label>{{task.name}}</label>
+      <div class="separator"></div>
+      <img src="../../../assets/{{task.icon}}">
+      <div></div>
+      <label>Duration: {{task.duration}}</label>
+      <div></div>
+      <label>Required:</label>
+      <div></div>
+      <p-scrollPanel>
+        <div class="required_items">
+          <div *ngFor="let reqItem of task.required">
+            <img src="../../../assets/{{reqItem.icon}}">
+            <div></div>
+            <label>{{reqItem.amount}}</label>
+          </div>
+        </div>
+      </p-scrollPanel>
+      <button [disabled]="allRequirements(task.required)" pButton (click)="taskPicked(task)" label="Select"></button>
+    </div>
+  </p-card>
+</div>

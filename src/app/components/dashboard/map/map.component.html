@@ -1,0 +1,18 @@
+<div id="map"></div>
+
+<div *ngIf="showDebug">
+  <p-button label="Tile Layer" (onClick)="showTileLayer()" id="tileBtn"></p-button>
+
+  <div class="joystick">
+    <p-button label="^" (onClick)="mockWalkTo('North')" id="northBtn"></p-button>
+    <div></div>
+    <p-button label="<" (onClick)="mockWalkTo('West')" id="westBtn"></p-button>
+    <p-button label=">" (onClick)="mockWalkTo('East')" id="eastBtn"></p-button>
+    <div></div>
+    <p-button label="v" (onClick)="mockWalkTo('South')" id="southBtn"></p-button>
+  </div>
+</div>
+
+<p-checkbox [(ngModel)]="showDebug" binary="true" id="debugCheckbox"></p-checkbox>
+
+<p-button class="scan-Button" (onClick)="scanForPlayers()" icon="fa fa-bullseye" ></p-button>

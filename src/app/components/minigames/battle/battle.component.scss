@@ -1,0 +1,127 @@
+.battle-container {
+  width: 50%;
+  margin: auto;
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+  }
+}
+
+label {
+  color: white;
+  text-shadow: 1px 0 black;
+}
+
+.enemy-info {
+  text-align: center;
+  label {
+    font-size: 24px;
+  }
+}
+
+.enemy_portrait {
+  margin: 10px auto auto;
+}
+
+.hp-ap-container {
+  width: 80%;
+  margin: 20px auto auto;
+  label {
+    font-size: 24px;
+  }
+}
+
+.block_overlay {
+  height: 24px;
+  width: inherit;
+  margin-top: -24px;
+  background-color: lightblue;
+  opacity: 0.7;
+  label {
+    color: blue;
+    display: flex;
+    width: fit-content;
+    margin: auto;
+  }
+}
+
+.card-placeholder {
+  width: 100px;
+  height: 100px;
+  background-color: grey;
+  border: 2px solid black;
+  border-radius: 5px;
+  label {
+    position: absolute;
+    font-size: 20px;
+    padding: 0 5px;
+    border: 2px solid black;
+    border-radius: 3px 0 3px 0;
+  }
+  img {
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+  }
+}
+
+.card-battle-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto auto;
+}
+
+.description_container {
+  display: flex;
+  justify-content: space-between;
+  label {
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+}
+
+.perception_container {
+  label {
+    font-size: 18px;
+  }
+}
+
+.outcome_container {
+  img {
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+  }
+}
+
+.card-selection-container {
+  margin: 20px auto auto;
+  display: flex;
+  .card-placeholder {
+    margin: 0 10px;
+  }
+}
+
+.round-btn-container {
+  width: fit-content;
+  margin: 30px auto auto;
+}
+
+.hp-change-label {
+  color: red;
+}
+
+.ap-change-label {
+  color: lightgreen;
+}
+
+.change-container {
+  height: 24px;
+}
+
+.result {
+  label {
+    font-size: 3em;
+  }
+  width: fit-content;
+  margin: auto;
+}

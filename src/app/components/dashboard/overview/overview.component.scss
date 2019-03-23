@@ -1,0 +1,56 @@
+.separator {
+  height: 20px;
+}
+
+:host ::ng-deep .ui-card {
+  display: inline-flex;
+  margin: 2.5%;
+  width: 45%;
+  font-weight: bold;
+  color: black;
+
+  @media screen and (max-width: 800px) {
+    width: 80%;
+    margin: 10%;
+  }
+}
+
+::ng-deep .ui-card-body {
+  width: 100%;
+}
+
+.card-content {
+  display: block;
+  height: 300px;
+  label {
+    font-size: 24px;
+  }
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.progress-bar-container {
+  width: 80%;
+  margin: auto;
+}
+
+::ng-deep body .ui-progressbar .ui-progressbar-label {
+  color: black;
+}
+
+.reward-content {
+  label {
+    font-size: 24px;
+  }
+  img {
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+p-card {
+  text-align: center;
+}

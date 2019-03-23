@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "items": [
+    {"id": 1, "name": "Food", "amount": 50, "icon": "food.png"},
+    {"id": 2, "name": "Metal", "amount": 5, "icon": "metal.png"},
+    {"id": 3, "name": "Wood", "amount": 3, "icon": "wood.png"}
+  ]
+}
