@@ -1,24 +1,27 @@
-const jwt = require('jsonwebtoken');
-
-const config = require('../../config'),
+const jwt = require('jsonwebtoken'),
+    config = require('../../config'),
     db = require('../services/database'),
-    User = require('../models/userLocal');
+    User = require('../models/userLocal'),
+    axios = require('axios').default;
 
 // The authentication controller.
 let AuthController = {};
 
 // Register a local user.
 AuthController.signUp = function (req, res) {
-    if (!req.body.email || !req.body.password) {
+    if (!req.body.email || !req.body.password || !req.body.username) {
         res.status(406).json({message: 'Please provide a email and a password.'});
     } else {
-        db.sync().then(function () {
+        db.sync().then(() => {
             let newUser = {
                 username: req.body.username,
                 email: req.body.email,
                 password: req.body.password
             };
-            return User.create(newUser).then(() => res.status(201).json({message: 'Account created!'}));
+            return User.create(newUser).then(() => {
+                axios.post("localhost:1339/user/create", {username: req.body.username});
+                res.status(201).json({message: 'Account created!'});
+            });
         }).catch(function (error) {
             res.status(403).json({message: error});
         });

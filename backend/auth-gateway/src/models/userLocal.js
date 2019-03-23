@@ -1,7 +1,6 @@
 let Sequelize = require('sequelize'),
-    bcrypt = require('bcrypt');
-
-let db = require('../services/database');
+    bcrypt = require('bcrypt'),
+    db = require('../services/database');
 
 // Define the User model
 let UserModel = db.define('localUser', {

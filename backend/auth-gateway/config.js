@@ -25,6 +25,11 @@ config.server = {
 
 config.proxy = {
     settings: [
+        {
+            endpointHook: "/user_management",
+            proxySetting: httpProxy('http://localhost:1339'),
+            secure: true
+        }
         /*
         {
             endpointHook: "/sampleUnsecure",
