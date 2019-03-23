@@ -15,20 +15,24 @@ export class ChatService {
   }
 
   getConversationById(id: any): Conversation {
-    for (let c of this.conversations) {
-      if (c.id == id) return c;
+    for (const c of this.conversations) {
+      if (c.id === id) {
+        return c;
+      }
     }
     return null;
   }
 
   readConversation(id: number): void {
-    for (let c of this.conversations) {
-      if (c.id == id) c.unread = false;
+    for (const c of this.conversations) {
+      if (c.id === id) {
+        c.unread = false;
+      }
     }
   }
 
   startNewConversation(id: number, id2: number): number {
-    let conv = {
+    const conv = {
       id: this.idCounter++,
       partnerId1: id,
       partnerId2: id2,

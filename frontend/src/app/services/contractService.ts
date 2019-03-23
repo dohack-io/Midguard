@@ -5,37 +5,47 @@ export class ContractService {
   allContracts: Contract[] = contractJson;
 
   getReceivedContractsOfUser(id: number): Contract[] {
-    let receivedContracts = [];
-    for (let contract of this.allContracts) {
-      if (contract.receiverId == id) receivedContracts.push(contract);
+    const receivedContracts = [];
+    for (const contract of this.allContracts) {
+      if (contract.receiverId === id) {
+        receivedContracts.push(contract);
+      }
     }
     return receivedContracts;
   }
 
   getPlacedContractsOfUser(id: number): Contract[] {
-    let receivedContracts = [];
-    for (let contract of this.allContracts) {
-      if (contract.creatorId == id) receivedContracts.push(contract);
+    const receivedContracts = [];
+    for (const contract of this.allContracts) {
+      if (contract.creatorId === id) {
+        receivedContracts.push(contract);
+      }
     }
     return receivedContracts;
   }
 
   getContractById(id: number): Contract {
-    for (let contract of this.allContracts) {
-      if (contract.id == id) return contract;
+    for (const contract of this.allContracts) {
+      if (contract.id === id) {
+        return contract;
+      }
     }
     return null;
   }
 
   acceptContract(id: number): void {
-    for (let contract of this.allContracts) {
-      if (contract.id === id) contract.accepted = true;
+    for (const contract of this.allContracts) {
+      if (contract.id === id) {
+        contract.accepted = true;
+      }
     }
   }
 
   declineContract(id: number): void {
     for (let i = 0; i < this.allContracts.length; i++) {
-      if (this.allContracts[i].id === id) this.allContracts.splice(i, 1);
+      if (this.allContracts[i].id === id) {
+        this.allContracts.splice(i, 1);
+      }
     }
   }
 

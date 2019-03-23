@@ -21,8 +21,8 @@ export class InventoryService {
   }
 
   addItem(item: Item): void {
-    for (let invItem of this.inventory.items) {
-      if (invItem.id == item.id) {
+    for (const invItem of this.inventory.items) {
+      if (invItem.id === item.id) {
         invItem.amount += item.amount;
         return;
       }
@@ -34,13 +34,13 @@ export class InventoryService {
   getRandomLoot(): Item[] {
     // TODO: Get from Server
     // TODO: Randomize
-    let wood = new Item();
+    const wood = new Item();
     wood.name = 'Wood';
     wood.amount = 5;
-    let metal = new Item();
+    const metal = new Item();
     metal.name = 'Metal';
     metal.amount = 5;
-    let food = new Item();
+    const food = new Item();
     food.name = 'Food';
     food.amount = 5;
     return [wood, metal, food];
@@ -56,8 +56,8 @@ export class InventoryService {
   }
 
   getBuyInventory(): Inventory {
-    let items = this.getInventory().items;
-    let inv = new Inventory();
+    const items = this.getInventory().items;
+    const inv = new Inventory();
     inv.items = items.slice(0, 2);
     return inv;
   }
@@ -67,40 +67,52 @@ export class InventoryService {
   }
 
   sellItem(item: Item, amount: number) {
-    let index = this.inventory.items.indexOf(item);
+    const index = this.inventory.items.indexOf(item);
     this.inventory.items[index].amount -= amount;
   }
 
   buyItem(item: Item, amount: number) {
-    let index = this.inventory.items.indexOf(item);
+    const index = this.inventory.items.indexOf(item);
     this.inventory.items[index].amount += amount;
   }
 
   containsItems(items: Item[]) {
-    for (let item of items) {
+    for (const item of items) {
       let index = -1;
       for (let i = 0; i < this.getInventory().items.length; i++) {
-        if (this.getInventory().items[i].id == item.id) index = i;
+        if (this.getInventory().items[i].id === item.id) {
+          index = i;
+        }
       }
-      if (index == -1) return false;
-      if (this.getInventory().items[index].amount < item.amount) return false;
+      if (index === -1) {
+        return false;
+      }
+      if (this.getInventory().items[index].amount < item.amount) {
+        return false;
+      }
     }
     return true;
   }
 
   removeItems(items: Item[]): void {
-    for (let item of items) {
+    for (const item of items) {
       let index = -1;
       for (let i = 0; i < this.getInventory().items.length; i++) {
-        if (this.getInventory().items[i].id == item.id) index = i;
+        if (this.getInventory().items[i].id === item.id) {
+          index = i;
+        }
       }
-      if (index != -1) this.getInventory().items[index].amount -= item.amount;
+      if (index !== -1) {
+        this.getInventory().items[index].amount -= item.amount;
+      }
     }
   }
 
   getItemById(id: number) {
-    for (let item of this.allItems) {
-      if (item.id == id) return item;
+    for (const item of this.allItems) {
+      if (item.id === id) {
+        return item;
+      }
     }
   }
 

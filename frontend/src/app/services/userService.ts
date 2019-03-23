@@ -29,7 +29,9 @@ export class UserService {
   setTask(taskId: number) {
     this.user.taskId = taskId;
     this.user.taskStart = new Date();
-    if (taskId != 0) this.userAnnouncer.next('New Task started');
+    if (taskId !== 0) {
+      this.userAnnouncer.next('New Task started');
+    }
   }
 
   creditScore(score: number) {

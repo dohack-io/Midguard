@@ -6,10 +6,10 @@ export class MapService {
    */
 
   squareAroundMarker(position: number[]): number[][] {
-    let lbc = [position[0] - 0.00025, position[1] - 0.0004];
-    let rbc = [position[0] - 0.00025, position[1] + 0.0004];
-    let ltc = [position[0] + 0.00025, position[1] - 0.0004];
-    let rtc = [position[0] + 0.00025, position[1] + 0.0004];
+    const lbc = [position[0] - 0.00025, position[1] - 0.0004];
+    const rbc = [position[0] - 0.00025, position[1] + 0.0004];
+    const ltc = [position[0] + 0.00025, position[1] - 0.0004];
+    const rtc = [position[0] + 0.00025, position[1] + 0.0004];
     return [ltc, rtc, rbc, lbc];
   }
 
@@ -55,18 +55,18 @@ export class MapService {
   }
 
   positionInsideSquare(position: number[], square: number[][]): boolean {
-    let x = position[0];
-    let y = position[1];
+    const x = position[0];
+    const y = position[1];
 
     let inside = false;
     for (let i = 0, j = square.length - 1; i < square.length; j = i++) {
-      let xi = square[i][0],
+      const xi = square[i][0],
         yi = square[i][1];
-      let xj = square[j][0],
+      const xj = square[j][0],
         yj = square[j][1];
 
-      let intersect =
-        yi > y != yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+      const intersect =
+        yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
       if (intersect) {
         inside = !inside;
       }
@@ -75,7 +75,7 @@ export class MapService {
   }
 
   getCurrentTile(position: number[], posTiles: number[][][]): number[][] {
-    for (let tile of posTiles) {
+    for (const tile of posTiles) {
       if (this.positionInsideSquare(position, tile)) {
         return tile;
       }
