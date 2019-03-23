@@ -1,6 +1,7 @@
 // Extern Dependencies
 const config = require('./config'),
     express = require('express'),
+    cors = require('cors'),
     bodyParser = require('body-parser');
 
 // App specific modules
@@ -10,6 +11,8 @@ const db = require('./src/services/database');
 
 // Init express js
 let app = express();
+
+app.use(cors());
 
 // Init bodyParser
 app.use(bodyParser.urlencoded({ extended: false }));
