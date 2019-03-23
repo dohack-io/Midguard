@@ -1,5 +1,3 @@
-'use strict';
-
 const httpProxy = require('express-http-proxy');
 
 let config = module.exports;
@@ -21,7 +19,7 @@ config.keys = {
 };
 
 config.server = {
-    port: 8196,
+    port: 1337,
     url: "localhost"
 };
 

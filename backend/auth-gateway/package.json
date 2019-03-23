@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-api-gateway",
+  "name": "api-gateway",
   "version": "1.0.0",
   "description": "API gateway written in NodeJs using expressjs, passportjs, jwt and MySQL",
   "main": "server.js",

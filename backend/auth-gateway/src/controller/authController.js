@@ -1,8 +1,6 @@
-'use strict';
-
 const jwt = require('jsonwebtoken');
 
-const config = require('../config'),
+const config = require('../../config'),
     db = require('../services/database'),
     User = require('../models/userLocal');
 
@@ -16,6 +14,7 @@ AuthController.signUp = function (req, res) {
     } else {
         db.sync().then(function () {
             let newUser = {
+                username: req.body.username,
                 email: req.body.email,
                 password: req.body.password
             };
@@ -23,7 +22,9 @@ AuthController.signUp = function (req, res) {
         }).catch(function (error) {
             res.status(403).json({message: error});
         });
+
     }
+    res.status(403);
 };
 
 // Verify a local user

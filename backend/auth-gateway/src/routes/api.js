@@ -1,7 +1,5 @@
-'use strict';
-
 const router = require('express').Router();
-const config = require('./../config').proxy.settings;
+const config = require('../../config').proxy.settings;
 
 let APIRoutes = function (passport) {
 
@@ -31,4 +29,4 @@ let APIRoutes = function (passport) {
     return router;
 };
 
-module.exports = APIRoutes;
+module.exports = APIRoutes();
