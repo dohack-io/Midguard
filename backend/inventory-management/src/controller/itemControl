@@ -1,0 +1,42 @@
+const config = require('../../config'),
+    db = require('../services/database'),
+    Item = require('../models/item'),
+    Inventory = require('../models/inventory'),
+    InvItem = require('../models/invItem');
+
+let ItemController = {};
+
+ItemController.getAllItems = function (req, res) {
+    //TODO
+};
+
+ItemController.getItemById = function (req, res) {
+    //TODO
+};
+
+ItemController.getItemByName = function (req, res) {
+    //TODO
+};
+
+ItemController.removeItemFromInventory = function (req, res) {
+    //TODO
+};
+
+ItemController.addItemToInventory = function (req, res) {
+    //TODO
+};
+
+ItemController.getRandomLoot = function (req, res) {
+    //TODO
+};
+
+ItemController.getInventory = function (req, res) {
+    //TODO
+};
+
+ItemController.getBuyInventory = function (req, res) {
+    //TODO
+};
+
+
+module.exports = ItemController;
