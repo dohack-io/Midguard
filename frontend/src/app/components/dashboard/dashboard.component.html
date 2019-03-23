@@ -1,12 +1,12 @@
 <div class="top-Bar">
   <div class="burger-menu">
     <a (click)="displaySB = true">
-      <img src="../../../assets/35x35_NavigationBar.png" />
+      <img src="../../../assets/burger_menu.png" />
     </a>
   </div>
   <div class="credit-counter">
     <label>{{ user.credits }}</label>
-    <img src="../../../assets/35x35_EurSign.png" />
+    <img src="../../../assets/credits.png" />
   </div>
 </div>
 
@@ -34,12 +34,13 @@
   </div>
 </p-sidebar>
 
-<p-button
-  (onClick)="returnToOverview()"
+<input
+  type="submit"
+  (click)="returnToOverview()"
   *ngIf="displayBack()"
-  class="back-Button"
-  icon="fa fa-angle-left"
-></p-button>
+  class="button button-back"
+  value=""
+/>
 
 <div class="dashboard">
   <router-outlet></router-outlet>
