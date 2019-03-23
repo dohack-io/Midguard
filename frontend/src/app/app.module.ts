@@ -34,7 +34,7 @@ import {
 import { CrackCodeComponent } from './components/minigames/crack-code/crack-code.component';
 import { BattleComponent } from './components/minigames/battle/battle.component';
 import { QuizComponent } from './components/minigames/quiz/quiz.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TerminalService } from 'primeng/components/terminal/terminalservice';
 import { MinesweeperComponent } from './components/minigames/minesweeper/minesweeper.component';
 import { TreeModule } from 'primeng/tree';
@@ -79,7 +79,6 @@ import { BattleService } from './services/battleService';
     FormsModule,
     HttpClientModule,
 
-    BrowserModule,
     BrowserAnimationsModule,
     CardModule,
     InputTextModule,

@@ -4,7 +4,7 @@ let config = module.exports;
 
 config.db = {
     user: 'root',
-    password: 'root',
+    password: '',
     name: 'auth_gateway'
 };
 

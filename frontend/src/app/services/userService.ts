@@ -1,14 +1,22 @@
 import { User } from '../entities/User';
 import u1 from '../MockData/User.json';
-import { Observable, of, Subject } from 'rxjs/index';
+import { Observable, Subject } from 'rxjs/index';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class UserService {
+  constructor(private http: HttpClient) {}
+
   private user: User = u1[0];
   private userAnnouncer: Subject<String>;
 
-  login(user: string, password: string): Observable<boolean> {
-    // SERVER: boolean if the user login was successful
-    return of(true);
+  login(user: string, password: string): Observable<any> {
+    return this.http.post('http://localhost:1337/auth/local/login', {
+      email: user,
+      username: '',
+      password: password
+    });
   }
 
   getUserAnnouncer(): Subject<String> {
@@ -19,10 +27,13 @@ export class UserService {
   }
 
   getUser(): User {
+    // TODO: Logged in User Object from server
+    // if not set use localstorage
     return this.user;
   }
 
   getUserById(id: number): User {
+    // get different users
     return u1[id - 1];
   }
 
