@@ -21,8 +21,10 @@ export class TaskService {
       .pipe(
         takeUntil(this.taskCompleted),
         map(tick => {
-          let restTime = Number((task.duration - this.timeReduction - (serverTime.getTime() / 1000 - start.getTime() / 1000 + tick + 1)).toFixed(0));
-          if(restTime <= 0) {
+          const restTime = Number(
+            (task.duration - this.timeReduction - (serverTime.getTime() / 1000 - start.getTime() / 1000 + tick + 1))
+              .toFixed(0));
+          if (restTime <= 0) {
             this.taskCompleted.next(false);
             this.taskFinished(task.id);
           }
@@ -33,7 +35,7 @@ export class TaskService {
   }
 
   getTaskAnnouncer() {
-    if(this.taskAnnouncer == null){
+    if (this.taskAnnouncer == null) {
       this.taskAnnouncer = new Subject<string>();
     }
     return this.taskAnnouncer;
@@ -45,9 +47,10 @@ export class TaskService {
   }
 
   getTaskById(taskId: number): Task {
-    for(let task of this.allTasks) {
-      if(task.id == taskId)
+    for (const task of this.allTasks) {
+      if (task.id === taskId) {
         return task;
+      }
     }
     return null;
   }
@@ -64,7 +67,7 @@ export class TaskService {
     this.taskTimer = null;
     this.timeReduction = 0;
     this.taskCompleted.next(false);
-    this.taskAnnouncer.next('Task Canceled')
+    this.taskAnnouncer.next('Task Canceled');
   }
 
   getAllTasks(profession: string, uId: number): Task[] {
