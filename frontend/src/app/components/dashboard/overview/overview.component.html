@@ -9,7 +9,7 @@
     />
 
     <ng-container *ngIf="user.taskId !== 0 && !taskIsFinished()">
-      <ng-container *ngTemplateOutlet="separatorBottom"></ng-container>
+      <app-separator type="triangle"></app-separator>
     </ng-container>
 
     <!-- Task in Progress -->
@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <ng-container *ngTemplateOutlet="separator"></ng-container>
+  <app-separator></app-separator>
 
   <div id="inventory" class="category">
     <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
@@ -48,14 +48,14 @@
     />
   </div>
 
-  <ng-container *ngTemplateOutlet="separator"></ng-container>
+  <app-separator></app-separator>
 
   <div id="map" class="category">
     <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
     <input type="submit" value="OPEN MAP" class="button" (click)="openMap()" />
   </div>
 
-  <ng-container *ngTemplateOutlet="separator"></ng-container>
+  <app-separator></app-separator>
 
   <div id="community" class="category">
     <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
@@ -67,7 +67,7 @@
     />
   </div>
 
-  <ng-container *ngTemplateOutlet="separator"></ng-container>
+  <app-separator></app-separator>
 
   <div id="contracts" class="category">
     <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
@@ -79,7 +79,7 @@
     />
   </div>
 
-  <ng-container *ngTemplateOutlet="separator"></ng-container>
+  <app-separator></app-separator>
 
   <div id="messages" class="category">
     <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
@@ -105,17 +105,3 @@
     <label>{{ task.reward[0].amount }} {{ task.reward[0].name }}</label>
   </div>
 </p-dialog>
-
-<ng-template #separator>
-  <div class="separator-container">
-    <div class="separator"></div>
-    <div class="separator-decorator-square"></div>
-  </div>
-</ng-template>
-
-<ng-template #separatorBottom>
-  <div class="separator-container">
-    <div class="separator"></div>
-    <div class="separator-decorator-triangle"></div>
-  </div>
-</ng-template>

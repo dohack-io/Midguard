@@ -50,6 +50,7 @@ import { ContractService } from './services/contractService';
 import { ContractViewComponent } from './components/dashboard/contract/contract-view/contract-view.component';
 import { NewContractComponent } from './components/dashboard/contract/new-cotract/new-contract.component';
 import { BattleService } from './services/battleService';
+import { SeparatorComponent } from './components/separator/separator.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { BattleService } from './services/battleService';
     CommunityComponent,
     NearbyPlayersComponent,
     ContractViewComponent,
-    NewContractComponent
+    NewContractComponent,
+    SeparatorComponent
   ],
   imports: [
     BrowserModule,
