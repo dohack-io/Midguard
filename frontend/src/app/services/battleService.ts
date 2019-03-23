@@ -1,8 +1,7 @@
-import {BattleUnit} from "../entities/BattleUnit";
-import {Card} from "../components/minigames/battle/Card.entity";
+import { BattleUnit } from '../entities/BattleUnit';
+import { Card } from '../components/minigames/battle/Card.entity';
 
-export class BattleService{
-
+export class BattleService {
   getAction(unit: BattleUnit): Card {
     let card = this.getRandomMove(unit.moveSet);
     card.value += unit.strength;
@@ -11,7 +10,7 @@ export class BattleService{
 
   getHand(unit: BattleUnit): Card[] {
     let hand = [];
-    for(let i = 0; i < unit.handSize; i++) {
+    for (let i = 0; i < unit.handSize; i++) {
       let card = this.getRandomMove(unit.moveSet);
       card.value += unit.strength;
       hand.push(card);
@@ -26,46 +25,52 @@ export class BattleService{
       move: moveSet[r].move,
       src: moveSet[r].src,
       value: moveSet[r].value + s
-    }
+    };
   }
 
   getEnemy(): BattleUnit {
     return {
-      name: "Test Enemy",
-      icon: "person_placeholder.png",
+      name: 'Test Enemy',
+      icon: 'person_placeholder.png',
       hp: 50,
       ap: 1,
       handSize: 1,
       strength: 15,
-      moveSet: [{
-        value: 1,
-        src: "sword.png",
-        move: "Attack"
-      }, {
-        value: 1,
-        src: "shield.png",
-        move: "Defense"
-      }]
+      moveSet: [
+        {
+          value: 1,
+          src: 'sword.png',
+          move: 'Attack'
+        },
+        {
+          value: 1,
+          src: 'shield.png',
+          move: 'Defense'
+        }
+      ]
     };
   }
 
   getPlayer(): BattleUnit {
     return {
-      name: "Player",
-      icon: "person_placeholder.png",
+      name: 'Player',
+      icon: 'person_placeholder.png',
       hp: 50,
       ap: 2,
       handSize: 4,
       strength: 5,
-      moveSet: [{
-        value: 1,
-        src: "sword.png",
-        move: "Attack"
-      }, {
-        value: 1,
-        src: "shield.png",
-        move: "Defense"
-      }]
+      moveSet: [
+        {
+          value: 1,
+          src: 'sword.png',
+          move: 'Attack'
+        },
+        {
+          value: 1,
+          src: 'shield.png',
+          move: 'Defense'
+        }
+      ]
     };
   }
 }

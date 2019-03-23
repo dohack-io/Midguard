@@ -1,4 +1,4 @@
-import {Card} from "../components/minigames/battle/Card.entity";
+import { Card } from '../components/minigames/battle/Card.entity';
 
 export class BattleUnit {
   name: string;
