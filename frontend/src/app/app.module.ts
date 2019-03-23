@@ -34,7 +34,7 @@ import {
 import { CrackCodeComponent } from './components/minigames/crack-code/crack-code.component';
 import { BattleComponent } from './components/minigames/battle/battle.component';
 import { QuizComponent } from './components/minigames/quiz/quiz.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TerminalService } from 'primeng/components/terminal/terminalservice';
 import { MinesweeperComponent } from './components/minigames/minesweeper/minesweeper.component';
 import { TreeModule } from 'primeng/tree';
@@ -50,6 +50,7 @@ import { ContractService } from './services/contractService';
 import { ContractViewComponent } from './components/dashboard/contract/contract-view/contract-view.component';
 import { NewContractComponent } from './components/dashboard/contract/new-cotract/new-contract.component';
 import { BattleService } from './services/battleService';
+import { SeparatorComponent } from './components/separator/separator.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { BattleService } from './services/battleService';
     CommunityComponent,
     NearbyPlayersComponent,
     ContractViewComponent,
-    NewContractComponent
+    NewContractComponent,
+    SeparatorComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,6 @@ import { BattleService } from './services/battleService';
     FormsModule,
     HttpClientModule,
 
-    BrowserModule,
     BrowserAnimationsModule,
     CardModule,
     InputTextModule,

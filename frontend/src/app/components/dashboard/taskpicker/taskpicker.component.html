@@ -15,8 +15,8 @@
   <p-card *ngFor="let task of tasks" align="center">
     <div class="card-content">
       <label>{{ task.name }}</label>
-      <div class="separator"></div>
-      <img src="../../../assets/{{ task.icon }}" />
+      <div class="spacing"></div>
+      <img src="../../../../assets/{{ task.icon }}" />
       <div></div>
       <label>Duration: {{ task.duration }}</label>
       <div></div>
@@ -25,7 +25,7 @@
       <p-scrollPanel>
         <div class="required_items">
           <div *ngFor="let reqItem of task.required">
-            <img src="../../../assets/{{ reqItem.icon }}" />
+            <img src="../../../../assets/{{ reqItem.icon }}" />
             <div></div>
             <label>{{ reqItem.amount }}</label>
           </div>

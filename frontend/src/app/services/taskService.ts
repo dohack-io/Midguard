@@ -94,4 +94,9 @@ export class TaskService {
         this.timeReduction
     );
   }
+
+  getTaskIdOfUser(name: string): number {
+    // get current task of user
+    return null;
+  }
 }
