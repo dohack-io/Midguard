@@ -1,0 +1,16 @@
+{
+  "name": "pm2runner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "cd ./auth-gateway; npm i; echo TODO: generic install script; exit 0;",
+    "start": "npx pm2 start ./auth-gateway/src/server.js; exit 0;",
+    "stop": "npx pm2 stop ./auth-gateway/src/server.js; exit 0;"
+  },
+  "author": "Steffen Osterburg",
+  "license": "MIT",
+  "dependencies": {
+    "pm2": "^3.4.0"
+  }
+}
