@@ -4,22 +4,26 @@
 <div class="wanted-container">
   <label>Wanted:</label>
   <div class="receiver">
-    <img src="../../../../assets/person_placeholder.png">
-    <label>{{receiver.name}}</label>
+    <img src="../../../../assets/person_placeholder.png" />
+    <label>{{ receiver.name }}</label>
   </div>
 </div>
 <div class="item-container">
   <div class="item" *ngFor="let item of contract.requestedItems">
     <p-card>
       <p-header>
-        <label>{{item.name}}</label>
+        <label>{{ item.name }}</label>
       </p-header>
       <div class="card-content">
-        <p-button icon="fa fa-times" styleClass="ui-button-danger" (onClick)="removeContractItem(item, 'requested')"></p-button>
-        <img src="../../../../assets/{{item.icon}}">
+        <p-button
+          icon="fa fa-times"
+          styleClass="ui-button-danger"
+          (onClick)="removeContractItem(item, 'requested')"
+        ></p-button>
+        <img src="../../../../assets/{{ item.icon }}" />
       </div>
       <p-footer>
-        <label>{{item.amount}}</label>
+        <label>{{ item.amount }}</label>
       </p-footer>
     </p-card>
   </div>
@@ -42,22 +46,26 @@
 <div class="provided-container">
   <label>Provided:</label>
   <div class="provider">
-    <img src="../../../../assets/person_placeholder.png">
-    <label>{{user.name}}</label>
+    <img src="../../../../assets/person_placeholder.png" />
+    <label>{{ user.name }}</label>
   </div>
 </div>
 <div class="item-container">
   <div class="item" *ngFor="let item of contract.providedItems">
     <p-card>
       <p-header>
-        <label>{{item.name}}</label>
+        <label>{{ item.name }}</label>
       </p-header>
       <div class="card-content">
-        <p-button icon="fa fa-times" styleClass="ui-button-danger" (onClick)="removeContractItem(item, 'provided')"></p-button>
-        <img src="../../../../assets/{{item.icon}}">
+        <p-button
+          icon="fa fa-times"
+          styleClass="ui-button-danger"
+          (onClick)="removeContractItem(item, 'provided')"
+        ></p-button>
+        <img src="../../../../assets/{{ item.icon }}" />
       </div>
       <p-footer>
-        <label>{{item.amount}}</label>
+        <label>{{ item.amount }}</label>
       </p-footer>
     </p-card>
   </div>
@@ -78,35 +86,50 @@
   </div>
 </div>
 <div class="reward-container">
-  <label>Reward: {{contract.reward}}</label>
-  <img src="../../../../assets/credit.png">
+  <label>Reward: {{ contract.reward }}</label>
+  <img src="../../../../assets/credit.png" />
 </div>
 <div class="response-container">
-  <p-button label="Submit" (onClick)="submitContract()" [disabled]="!submitable()"></p-button>
-  <p-button label="Cancel" styleClass="ui-button-danger" (onClick)="cancelContract()"></p-button>
+  <p-button
+    label="Submit"
+    (onClick)="submitContract()"
+    [disabled]="!submitable()"
+  ></p-button>
+  <p-button
+    label="Cancel"
+    styleClass="ui-button-danger"
+    (onClick)="cancelContract()"
+  ></p-button>
 </div>
 
-
-<p-dialog header="Add Profile Item" [(visible)]="addItemDialog"
-          [style]="{width: '60vw', height: '60vh'}">
+<p-dialog
+  header="Add Profile Item"
+  [(visible)]="addItemDialog"
+  [style]="{ width: '60vw', height: '60vh' }"
+>
   <div class="addItemDialog-content">
     <div class="search-bar">
-      <input placeholder="Search" type="text" pInputText [(ngModel)]="searchStr" (ngModelChange)="search()"/>
+      <input
+        placeholder="Search"
+        type="text"
+        pInputText
+        [(ngModel)]="searchStr"
+        (ngModelChange)="search()"
+      />
     </div>
     <div class="add-items">
       <div class="item" *ngFor="let item of allDisplayedItems">
         <p-card>
           <div class="card-content" (click)="addContractItem(item)">
-            <img src="../../../../assets/{{item.icon}}">
+            <img src="../../../../assets/{{ item.icon }}" />
           </div>
           <p-footer>
             <button (click)="increase(item)">+</button>
-            <label>{{item.amount}}</label>
-            <button  (click)="decrease(item)">-</button>
+            <label>{{ item.amount }}</label>
+            <button (click)="decrease(item)">-</button>
           </p-footer>
         </p-card>
       </div>
     </div>
   </div>
 </p-dialog>
-

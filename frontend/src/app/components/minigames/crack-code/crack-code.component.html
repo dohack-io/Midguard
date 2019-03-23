@@ -6,10 +6,10 @@
     <p-button label="+" (onClick)="increase(4)"></p-button>
   </div>
   <div>
-    <label>{{firstNum}}</label>
-    <label>{{secondNum}}</label>
-    <label>{{thirdNum}}</label>
-    <label>{{fourthNum}}</label>
+    <label>{{ firstNum }}</label>
+    <label>{{ secondNum }}</label>
+    <label>{{ thirdNum }}</label>
+    <label>{{ fourthNum }}</label>
   </div>
   <div>
     <p-button label="-" (onClick)="decrease(1)"></p-button>
@@ -18,13 +18,17 @@
     <p-button label="-" (onClick)="decrease(4)"></p-button>
   </div>
   <div>
-    <p-button class="submitBtn" label="Enter" (onClick)="evaluateCode()" [disabled]="enterBtn"></p-button>
+    <p-button
+      class="submitBtn"
+      label="Enter"
+      (onClick)="evaluateCode()"
+      [disabled]="enterBtn"
+    ></p-button>
   </div>
 </div>
-<hr/>
+<hr />
 <div class="lamp-container">
-  <img *ngFor="let g of correctNP" src="../../../../assets/circle-green.png">
-  <img *ngFor="let y of correctN" src="../../../../assets/circle-yellow.png">
-  <img *ngFor="let t of notCorrect" src="../../../../assets/circle.png">
+  <img *ngFor="let g of correctNP" src="../../../../assets/circle-green.png" />
+  <img *ngFor="let y of correctN" src="../../../../assets/circle-yellow.png" />
+  <img *ngFor="let t of notCorrect" src="../../../../assets/circle.png" />
 </div>
-

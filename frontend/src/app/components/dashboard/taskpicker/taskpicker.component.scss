@@ -12,7 +12,7 @@
   font-size: 50px;
   color: white;
   text-align: center;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .separator {
@@ -44,19 +44,19 @@
     width: 150px;
     height: 150px;
   }
-  i{
+  i {
     font-size: 130px;
   }
 }
 
-.required_items{
+.required_items {
   display: flex;
   align-items: center;
   justify-content: center;
   label {
     font-size: 18px;
   }
-  img{
+  img {
     margin: 0 5px;
     height: 50px;
     width: 50px;

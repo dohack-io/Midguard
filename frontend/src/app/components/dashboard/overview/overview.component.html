@@ -5,27 +5,32 @@
       <div class="separator"></div>
       <!-- Task in Progress -->
       <div *ngIf="user.taskId !== 0 && !taskIsFinished()">
-        <label>{{task.name}}</label>
+        <label>{{ task.name }}</label>
         <div class="separator"></div>
         <div class="progress-bar-container">
-          <p-progressBar [value]="taskProgress" ></p-progressBar>
+          <p-progressBar [value]="taskProgress"></p-progressBar>
         </div>
         <div class="separator"></div>
-        <label>Completed in: {{taskTime}}</label>
+        <label>Completed in: {{ taskTime }}</label>
         <div></div>
-        <label>Reward: {{task.reward[0].amount}} {{task.reward[0].name}}</label>
+        <label
+          >Reward: {{ task.reward[0].amount }} {{ task.reward[0].name }}</label
+        >
         <div class="separator"></div>
         <p-button label="Cancel" (onClick)="cancelTask()"></p-button>
       </div>
       <!-- Reward collectible -->
       <div *ngIf="user.taskId !== 0 && taskIsFinished()">
-        <img src="../../../assets/closed-treasure-chest.png" #rewardIcon>
+        <img src="../../../assets/closed-treasure-chest.png" #rewardIcon />
         <div class="separator"></div>
-        <p-button label="Collect Reward" (onClick)="openRewardDialog(rewardIcon)"></p-button>
+        <p-button
+          label="Collect Reward"
+          (onClick)="openRewardDialog(rewardIcon)"
+        ></p-button>
       </div>
       <!-- No Task picked -->
       <div *ngIf="user.taskId === 0">
-        <img src="../../../assets/task.png">
+        <img src="../../../assets/task.png" />
         <div class="separator"></div>
         <p-button label="Start New Task" (onClick)="pickNewTask()"></p-button>
       </div>
@@ -36,7 +41,7 @@
     <div class="card-content">
       <label>INVENTORY</label>
       <div class="separator"></div>
-      <img src="../../../assets/bag.png">
+      <img src="../../../assets/bag.png" />
       <div class="separator"></div>
       <p-button label="Open Inventory" (onClick)="openInventory()"></p-button>
     </div>
@@ -45,7 +50,7 @@
     <div class="card-content">
       <label>MAP</label>
       <div class="separator"></div>
-      <img src="../../../assets/treasure-map.png">
+      <img src="../../../assets/treasure-map.png" />
       <div class="separator"></div>
       <p-button label="Open Map" (onClick)="openMap()"></p-button>
     </div>
@@ -55,7 +60,7 @@
     <div class="card-content">
       <label>COMMUNITY</label>
       <div class="separator"></div>
-      <img src="../../../assets/community.png">
+      <img src="../../../assets/community.png" />
       <div class="separator"></div>
       <p-button label="Join Community" (onClick)="joinCommunity()"></p-button>
     </div>
@@ -65,7 +70,7 @@
     <div class="card-content">
       <label>CONTRACTS</label>
       <div class="separator"></div>
-      <img src="../../../assets/quest.png">
+      <img src="../../../assets/quest.png" />
       <div class="separator"></div>
       <p-button label="Open Contracts" (onClick)="openRequests()"></p-button>
     </div>
@@ -75,18 +80,23 @@
     <div class="card-content">
       <label>MESSAGES</label>
       <div class="separator"></div>
-      <img src="../../../assets/message.png">
+      <img src="../../../assets/message.png" />
       <div class="separator"></div>
       <p-button label="View Messages" (onClick)="viewMessages()"></p-button>
     </div>
   </p-card>
 </div>
 
-<p-dialog header="Collect Reward" [(visible)]="rewardDisplay" (onHide)="collectReward()"
-          [style]="{width: '200px', height: '200px'}" *ngIf="task">
+<p-dialog
+  header="Collect Reward"
+  [(visible)]="rewardDisplay"
+  (onHide)="collectReward()"
+  [style]="{ width: '200px', height: '200px' }"
+  *ngIf="task"
+>
   <div class="reward-content" align="center">
-    <img src="../../../assets/{{task.reward[0].icon}}">
+    <img src="../../../assets/{{ task.reward[0].icon }}" />
     <div class="separator"></div>
-    <label>{{task.reward[0].amount}} {{task.reward[0].name}}</label>
+    <label>{{ task.reward[0].amount }} {{ task.reward[0].name }}</label>
   </div>
 </p-dialog>

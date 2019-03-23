@@ -4,7 +4,7 @@
 <div class="wanted-container">
   <label>Wanted:</label>
   <div class="receiver">
-    <img src="../../../../assets/person_placeholder.png">
+    <img src="../../../../assets/person_placeholder.png" />
     <label>BlaMaster</label>
   </div>
 </div>
@@ -12,13 +12,13 @@
   <div class="item" *ngFor="let item of contract.requestedItems">
     <p-card>
       <p-header>
-        <label>{{item.name}}</label>
+        <label>{{ item.name }}</label>
       </p-header>
       <div class="card-content">
-        <img src="../../../../assets/{{item.icon}}">
+        <img src="../../../../assets/{{ item.icon }}" />
       </div>
       <p-footer>
-        <label>{{item.amount}}</label>
+        <label>{{ item.amount }}</label>
       </p-footer>
     </p-card>
   </div>
@@ -26,7 +26,7 @@
 <div class="provided-container">
   <label>Provided:</label>
   <div class="provider">
-    <img src="../../../../assets/person_placeholder.png">
+    <img src="../../../../assets/person_placeholder.png" />
     <label>BlubbMaster</label>
   </div>
 </div>
@@ -34,28 +34,53 @@
   <div class="item" *ngFor="let item of contract.providedItems">
     <p-card>
       <p-header>
-        <label>{{item.name}}</label>
+        <label>{{ item.name }}</label>
       </p-header>
       <div class="card-content">
-        <img src="../../../../assets/{{item.icon}}">
+        <img src="../../../../assets/{{ item.icon }}" />
       </div>
       <p-footer>
-        <label>{{item.amount}}</label>
+        <label>{{ item.amount }}</label>
       </p-footer>
     </p-card>
   </div>
 </div>
 <div class="reward-container">
-  <label>Reward: {{contract.reward}}</label>
-  <img src="../../../../assets/credit.png">
+  <label>Reward: {{ contract.reward }}</label>
+  <img src="../../../../assets/credit.png" />
 </div>
 <div class="response-container" *ngIf="isReceivedContract()">
-  <p-button label="Submit" *ngIf="contract.accepted" (onClick)="submitContract()" [disabled]="!submitable()"></p-button>
-  <p-button label="Accept" *ngIf="!contract.accepted" (onClick)="acceptContract()" [disabled]="!acceptable()"></p-button>
-  <p-button label="Cancel" *ngIf="contract.accepted" styleClass="ui-button-danger" (onClick)="cancelContract()" [disabled]="!cancable()"></p-button>
-  <p-button label="Decline" *ngIf="!contract.accepted" styleClass="ui-button-danger" (onClick)="declineContract()"></p-button>
+  <p-button
+    label="Submit"
+    *ngIf="contract.accepted"
+    (onClick)="submitContract()"
+    [disabled]="!submitable()"
+  ></p-button>
+  <p-button
+    label="Accept"
+    *ngIf="!contract.accepted"
+    (onClick)="acceptContract()"
+    [disabled]="!acceptable()"
+  ></p-button>
+  <p-button
+    label="Cancel"
+    *ngIf="contract.accepted"
+    styleClass="ui-button-danger"
+    (onClick)="cancelContract()"
+    [disabled]="!cancable()"
+  ></p-button>
+  <p-button
+    label="Decline"
+    *ngIf="!contract.accepted"
+    styleClass="ui-button-danger"
+    (onClick)="declineContract()"
+  ></p-button>
 </div>
 <div class="response-container" *ngIf="!isReceivedContract()">
-  <p-button label="Cancel" styleClass="ui-button-danger" [disabled]="contract.accepted" (onClick)="cancelContract()"></p-button>
+  <p-button
+    label="Cancel"
+    styleClass="ui-button-danger"
+    [disabled]="contract.accepted"
+    (onClick)="cancelContract()"
+  ></p-button>
 </div>
-

@@ -2,13 +2,13 @@
   <label>Profile</label>
 </div>
 <div class="profile-picture">
-  <img src="../../../assets/{{user.icon}}">
+  <img src="../../../assets/{{ user.icon }}" />
 </div>
 <div class="player-info">
-  <label>{{user.name}}</label>
+  <label>{{ user.name }}</label>
 </div>
 <div class="player-info">
-  <label>Level: {{user.level}}</label>
+  <label>Level: {{ user.level }}</label>
 </div>
 <div class="player-info" *ngIf="profileItems.length != 0 || edit">
   <label>Trading:</label>
@@ -17,11 +17,16 @@
   <div class="item" *ngFor="let item of profileItems">
     <p-card>
       <p-header>
-        <label>{{item.name}}</label>
+        <label>{{ item.name }}</label>
       </p-header>
       <div class="card-content">
-        <p-button icon="fa fa-times" styleClass="ui-button-danger" *ngIf="edit" (onClick)="removeProfileItem(item)"></p-button>
-        <img src="../../../../assets/{{item.icon}}">
+        <p-button
+          icon="fa fa-times"
+          styleClass="ui-button-danger"
+          *ngIf="edit"
+          (onClick)="removeProfileItem(item)"
+        ></p-button>
+        <img src="../../../../assets/{{ item.icon }}" />
       </div>
     </p-card>
   </div>
@@ -32,7 +37,7 @@
       </p-header>
       <div class="card-content">
         <div class="plus">
-        <label>+</label>
+          <label>+</label>
         </div>
       </div>
     </p-card>
@@ -46,17 +51,30 @@
   <p-button label="Edit" (onClick)="editProfile()"></p-button>
 </div>
 
-<p-dialog header="Add Profile Item" [(visible)]="addItemDialog"
-          [style]="{width: '60vw', height: '60vh'}">
+<p-dialog
+  header="Add Profile Item"
+  [(visible)]="addItemDialog"
+  [style]="{ width: '60vw', height: '60vh' }"
+>
   <div class="addItemDialog-content">
     <div class="search-bar">
-      <input placeholder="Search" type="text" pInputText [(ngModel)]="searchStr" (ngModelChange)="search()"/>
+      <input
+        placeholder="Search"
+        type="text"
+        pInputText
+        [(ngModel)]="searchStr"
+        (ngModelChange)="search()"
+      />
     </div>
     <div class="profile-items">
-      <div class="item" *ngFor="let item of allDisplayedItems" (click)="addProfileItem(item)">
+      <div
+        class="item"
+        *ngFor="let item of allDisplayedItems"
+        (click)="addProfileItem(item)"
+      >
         <p-card>
           <div class="card-content">
-            <img src="../../../../assets/{{item.icon}}">
+            <img src="../../../../assets/{{ item.icon }}" />
           </div>
         </p-card>
       </div>

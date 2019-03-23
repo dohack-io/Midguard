@@ -1,5 +1,5 @@
 <div class="title">
-  <label>{{selectedTab}}</label>
+  <label>{{ selectedTab }}</label>
   <p-button [label]="tradeBtnText" (click)="toggleTrade()"></p-button>
 </div>
 
@@ -9,38 +9,69 @@
 </div>
 
 <div class="search-bar">
-  <input placeholder="Search" type="text" pInputText [(ngModel)]="searchStr" (ngModelChange)="search()"/>
+  <input
+    placeholder="Search"
+    type="text"
+    pInputText
+    [(ngModel)]="searchStr"
+    (ngModelChange)="search()"
+  />
 </div>
 
 <div class="inventory-content">
   <p-card *ngFor="let item of displayedInventory" (click)="clickedItem(item)">
     <p-header>
-      <label>{{item.name}}</label>
+      <label>{{ item.name }}</label>
     </p-header>
     <div class="card-content">
-      <img src="../../../assets/{{item.icon}}">
+      <img src="../../../assets/{{ item.icon }}" />
     </div>
     <p-footer>
-      <label *ngIf="selectedTab != 'Buy'">{{item.amount}} </label>
-      <label *ngIf="selectedTab != 'Inventory'">Price: {{getPrice(item)}}</label>
+      <label *ngIf="selectedTab != 'Buy'">{{ item.amount }} </label>
+      <label *ngIf="selectedTab != 'Inventory'"
+        >Price: {{ getPrice(item) }}</label
+      >
     </p-footer>
   </p-card>
 </div>
 
-<p-dialog header="Sell {{sellItem?.name}}" [(visible)]="displaySellDialog" (onHide)="displaySellDialog = false"
-    [style]="{width: '70vw'}">
+<p-dialog
+  header="Sell {{ sellItem?.name }}"
+  [(visible)]="displaySellDialog"
+  (onHide)="displaySellDialog = false"
+  [style]="{ width: '70vw' }"
+>
   <div class="number-picker">
     <label>Amount: </label>
-    <input pInputText type="number" pKeyFilter="int" value="0" [(ngModel)]="tradeAmount" max="{{sellItem?.amount}}" min="1"/>
+    <input
+      pInputText
+      type="number"
+      pKeyFilter="int"
+      value="0"
+      [(ngModel)]="tradeAmount"
+      max="{{ sellItem?.amount }}"
+      min="1"
+    />
   </div>
   <p-button label="Submit" (onClick)="sell()"></p-button>
 </p-dialog>
 
-<p-dialog header="Buy {{buyItem?.name}}" [(visible)]="displayBuyDialog" (onHide)="displayBuyDialog = false"
-    [style]="{width: '70vw'}">
+<p-dialog
+  header="Buy {{ buyItem?.name }}"
+  [(visible)]="displayBuyDialog"
+  (onHide)="displayBuyDialog = false"
+  [style]="{ width: '70vw' }"
+>
   <div class="number-picker">
     <label>Amount: </label>
-    <input pInputText type="number" pKeyFilter="int" value="0" [(ngModel)]="tradeAmount" min="1"/>
+    <input
+      pInputText
+      type="number"
+      pKeyFilter="int"
+      value="0"
+      [(ngModel)]="tradeAmount"
+      min="1"
+    />
   </div>
   <p-button label="Submit" (onClick)="buy()"></p-button>
 </p-dialog>
