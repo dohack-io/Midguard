@@ -21,3 +21,34 @@ html {
 body {
   margin: 0;
 }
+
+input.button {
+  background: url('assets/button_outline.png');
+  width: 258px;
+  height: 44px;
+  border: none;
+  color: $text-color-light;
+  outline: none;
+}
+
+input.button:active,
+input.button:hover {
+  background: url('assets/button_outline_highlight.png');
+  outline: none;
+}
+
+input.button.button-back {
+  background: url('assets/back_button.png');
+  position: fixed;
+  top: 100px;
+  left: 2vw;
+  z-index: 990;
+  width: 33px;
+  height: 18px;
+  cursor: default;
+}
+
+input.button.button-back:active,
+input.button.button-back:hover {
+  background: url('assets/back_button_highlight.png');
+}

@@ -29,21 +29,6 @@
   margin-bottom: 1rem;
 }
 
-input.button {
-  background: url('../../../../assets/Button_Outline.png');
-  width: 258px;
-  height: 44px;
-  border: none;
-  color: $text-color-light;
-  outline: none;
-}
-
-input.button:active,
-input.button:hover {
-  background: url('../../../../assets/Button_Outline_Highlight.png');
-  outline: none;
-}
-
 :host ::ng-deep .ui-card {
   display: inline-flex;
   margin: 2.5%;

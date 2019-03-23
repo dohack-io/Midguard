@@ -16,6 +16,6 @@ let ItemModel = db.define('Item', {
         type: Sequelize.DOUBLE,
         allowNull: false
     }
-});
+}, {timestamps: false});
 
 module.exports = ItemModel;
