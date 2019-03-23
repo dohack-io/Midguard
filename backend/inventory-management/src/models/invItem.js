@@ -20,6 +20,6 @@ let InvItemModel = db.define('InvItem', {
         type: Sequelize.INTEGER,
         allowNull: false
     }
-});
+}, {timestamps: false});
 
 module.exports = InvItemModel;

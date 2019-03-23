@@ -7,31 +7,49 @@ const config = require('../../config'),
 let ItemController = {};
 
 ItemController.getAllItems = function (req, res) {
-    //TODO
+    Item.findAll().then((items) =>
+        res.status(200).send(items)
+    );
 };
 
 ItemController.getItemById = function (req, res) {
-    //TODO
+    Item.findByPk(req.params.id).then((item) =>
+        res.status(200).send(item)
+    );
 };
 
 ItemController.getItemByName = function (req, res) {
-    //TODO
+    Item.findOne({
+        where: {name: req.params.name}
+    }).then((item) => res.status(200).send(item));
 };
 
-ItemController.removeItemFromInventory = function (req, res) {
-    //TODO
-};
-
-ItemController.addItemToInventory = function (req, res) {
-    //TODO
+ItemController.updateItemOfInventory = function (req, res) {
+    InvItem.destroy({
+        where: {id: req.body.id}
+    });
+    InvItem.create(req.body);
+    Inventory.destroy({
+        where: {invItemID: req.body.id, userID: req.params.userID}
+    });
+    Inventory.create({
+        userID: req.params.userID,
+        invItemID: req.body.id
+    }).then(() => res.status(201).json({message: 'Item added'}));
 };
 
 ItemController.getRandomLoot = function (req, res) {
     //TODO
 };
 
-ItemController.getInventory = function (req, res) {
-    //TODO
+ItemController.getInventory = async function (req, res) {
+    let items = [];
+    let entries = await Inventory.findAll({where: {userID: req.params.id}});
+    for (let entry of entries) {
+        let item = await InvItem.findOne({where: {id: entry.invItemID}});
+        items.push(item);
+    }
+    res.status(200).send({id: entries[0].id, items: items});
 };
 
 ItemController.getBuyInventory = function (req, res) {
