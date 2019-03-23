@@ -1,90 +1,95 @@
-<div>
-  <p-card>
-    <div class="card-content">
-      <label>TASK</label>
-      <div class="separator"></div>
-      <!-- Task in Progress -->
-      <div *ngIf="user.taskId !== 0 && !taskIsFinished()">
-        <label>{{ task.name }}</label>
-        <div class="separator"></div>
-        <div class="progress-bar-container">
-          <p-progressBar [value]="taskProgress"></p-progressBar>
-        </div>
-        <div class="separator"></div>
-        <label>Completed in: {{ taskTime }}</label>
-        <div></div>
-        <label
-          >Reward: {{ task.reward[0].amount }} {{ task.reward[0].name }}</label
-        >
-        <div class="separator"></div>
-        <p-button label="Cancel" (onClick)="cancelTask()"></p-button>
+<div class="wrapper">
+  <div id="tasks" class="category">
+    <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
+    <input
+      type="submit"
+      (click)="pickNewTask()"
+      class="button"
+      value="VIEW AVAILABLE TASKS"
+    />
+
+    <ng-container *ngIf="user.taskId !== 0 && !taskIsFinished()">
+      <ng-container *ngTemplateOutlet="separatorBottom"></ng-container>
+    </ng-container>
+
+    <!-- Task in Progress -->
+    <div *ngIf="user.taskId !== 0 && !taskIsFinished()">
+      <div class="progress-container">
+        <img [src]="progressPath" alt="taskProgress" />
+        <img [src]="taskImagePath" alt="task" />
       </div>
-      <!-- Reward collectible -->
-      <div *ngIf="user.taskId !== 0 && taskIsFinished()">
-        <img src="../../../assets/closed-treasure-chest.png" #rewardIcon />
-        <div class="separator"></div>
-        <p-button
-          label="Collect Reward"
-          (onClick)="openRewardDialog(rewardIcon)"
-        ></p-button>
-      </div>
-      <!-- No Task picked -->
-      <div *ngIf="user.taskId === 0">
-        <img src="../../../assets/task.png" />
-        <div class="separator"></div>
-        <p-button label="Start New Task" (onClick)="pickNewTask()"></p-button>
-      </div>
+      <div class="spacing"></div>
+      <label>{{ task.name }}</label>
+      <div class="spacing"></div>
+      <label>Completed in: {{ taskTime }}</label>
+      <div></div>
+      <label>
+        Reward: {{ task.reward[0].amount }} {{ task.reward[0].name }}
+      </label>
+      <div class="spacing"></div>
+      <input
+        type="submit"
+        class="button"
+        (click)="cancelTask()"
+        value="CANCEL CURRENT TASK"
+      />
     </div>
-  </p-card>
+  </div>
 
-  <p-card>
-    <div class="card-content">
-      <label>INVENTORY</label>
-      <div class="separator"></div>
-      <img src="../../../assets/bag.png" />
-      <div class="separator"></div>
-      <p-button label="Open Inventory" (onClick)="openInventory()"></p-button>
-    </div>
-  </p-card>
-  <p-card>
-    <div class="card-content">
-      <label>MAP</label>
-      <div class="separator"></div>
-      <img src="../../../assets/treasure-map.png" />
-      <div class="separator"></div>
-      <p-button label="Open Map" (onClick)="openMap()"></p-button>
-    </div>
-  </p-card>
+  <ng-container *ngTemplateOutlet="separator"></ng-container>
 
-  <p-card>
-    <div class="card-content">
-      <label>COMMUNITY</label>
-      <div class="separator"></div>
-      <img src="../../../assets/community.png" />
-      <div class="separator"></div>
-      <p-button label="Join Community" (onClick)="joinCommunity()"></p-button>
-    </div>
-  </p-card>
+  <div id="inventory" class="category">
+    <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
+    <input
+      type="submit"
+      value="OPEN INVENTORY"
+      class="button"
+      (click)="openInventory()"
+    />
+  </div>
 
-  <p-card>
-    <div class="card-content">
-      <label>CONTRACTS</label>
-      <div class="separator"></div>
-      <img src="../../../assets/quest.png" />
-      <div class="separator"></div>
-      <p-button label="Open Contracts" (onClick)="openRequests()"></p-button>
-    </div>
-  </p-card>
+  <ng-container *ngTemplateOutlet="separator"></ng-container>
 
-  <p-card>
-    <div class="card-content">
-      <label>MESSAGES</label>
-      <div class="separator"></div>
-      <img src="../../../assets/message.png" />
-      <div class="separator"></div>
-      <p-button label="View Messages" (onClick)="viewMessages()"></p-button>
-    </div>
-  </p-card>
+  <div id="map" class="category">
+    <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
+    <input type="submit" value="OPEN MAP" class="button" (click)="openMap()" />
+  </div>
+
+  <ng-container *ngTemplateOutlet="separator"></ng-container>
+
+  <div id="community" class="category">
+    <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
+    <input
+      type="submit"
+      value="JOIN COMMUNITY"
+      class="button"
+      (click)="joinCommunity()"
+    />
+  </div>
+
+  <ng-container *ngTemplateOutlet="separator"></ng-container>
+
+  <div id="contracts" class="category">
+    <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
+    <input
+      type="submit"
+      value="OPEN CONTRACTS"
+      class="button"
+      (click)="openRequests()"
+    />
+  </div>
+
+  <ng-container *ngTemplateOutlet="separator"></ng-container>
+
+  <div id="messages" class="category">
+    <img class="category-icon" src="../../../../assets/Fill_Icon.png" /><br />
+    <input
+      type="submit"
+      value="VIEW MESSAGES"
+      class="button"
+      (click)="viewMessages()"
+    />
+  </div>
 </div>
 
 <p-dialog
@@ -96,7 +101,21 @@
 >
   <div class="reward-content" align="center">
     <img src="../../../assets/{{ task.reward[0].icon }}" />
-    <div class="separator"></div>
+    <div class="spacing"></div>
     <label>{{ task.reward[0].amount }} {{ task.reward[0].name }}</label>
   </div>
 </p-dialog>
+
+<ng-template #separator>
+  <div class="separator-container">
+    <div class="separator"></div>
+    <div class="separator-decorator-square"></div>
+  </div>
+</ng-template>
+
+<ng-template #separatorBottom>
+  <div class="separator-container">
+    <div class="separator"></div>
+    <div class="separator-decorator-triangle"></div>
+  </div>
+</ng-template>

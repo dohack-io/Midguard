@@ -1,5 +1,90 @@
-.separator {
+@import '../../../../variables';
+
+.wrapper {
+  padding-bottom: 2rem;
+}
+
+.progress-container {
+  position: relative;
+  height: 160px;
+}
+
+.progress-container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spacing {
   height: 20px;
+}
+
+.separator-container {
+  content: '';
+  width: 100%;
+  position: relative;
+  margin: 40px auto;
+}
+
+.category {
+  text-align: center;
+  color: $text-color-light;
+}
+
+.category-icon {
+  margin-bottom: 1rem;
+}
+
+input.button {
+  background: url('../../../../assets/Button_Outline.png');
+  width: 258px;
+  height: 44px;
+  border: none;
+  color: $text-color-light;
+  outline: none;
+}
+
+input.button:active,
+input.button:hover {
+  background: url('../../../../assets/Button_Outline_Highlight.png');
+  outline: none;
+}
+
+.separator {
+  content: '';
+  width: 100%;
+  border-bottom: 2px solid $graphic-element;
+  box-shadow: 0 3px 4px black;
+}
+
+.separator-decorator-square {
+  position: absolute;
+  content: '';
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  background-color: $background-color;
+  border: 2px solid $graphic-element;
+  transform-origin: center center;
+  left: calc(50% - 7px);
+  top: -6px;
+  box-shadow: 3px 3px 4px black;
+}
+
+.separator-decorator-triangle {
+  position: absolute;
+  content: '';
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  background-color: $background-color;
+  border-right: 2px solid $graphic-element;
+  border-bottom: 2px solid $graphic-element;
+  transform-origin: center center;
+  left: calc(50% - 7px);
+  top: -6px;
+  box-shadow: 3px 3px 4px black;
 }
 
 :host ::ng-deep .ui-card {
