@@ -3,6 +3,6 @@ export class Item {
   name: string;
   amount: number;
   icon: string;
-  //durability: number;
-  //effect: string;
+  // durability: number;
+  // effect: string;
 }

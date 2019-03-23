@@ -3,15 +3,15 @@ import { Card } from '../components/minigames/battle/Card.entity';
 
 export class BattleService {
   getAction(unit: BattleUnit): Card {
-    let card = this.getRandomMove(unit.moveSet);
+    const card = this.getRandomMove(unit.moveSet);
     card.value += unit.strength;
     return card;
   }
 
   getHand(unit: BattleUnit): Card[] {
-    let hand = [];
+    const hand = [];
     for (let i = 0; i < unit.handSize; i++) {
-      let card = this.getRandomMove(unit.moveSet);
+      const card = this.getRandomMove(unit.moveSet);
       card.value += unit.strength;
       hand.push(card);
     }
@@ -19,8 +19,8 @@ export class BattleService {
   }
 
   private getRandomMove(moveSet: Card[]): Card {
-    let r = Math.floor(Math.random() * moveSet.length);
-    let s = Math.floor(Math.random() * 10) - 5;
+    const r = Math.floor(Math.random() * moveSet.length);
+    const s = Math.floor(Math.random() * 10) - 5;
     return {
       move: moveSet[r].move,
       src: moveSet[r].src,

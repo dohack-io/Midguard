@@ -2,7 +2,7 @@ import { Skill } from '../entities/Skill';
 
 export class SkillService {
   getSkillByProfession(profession: string): Skill[][] {
-    let t1 = [
+    const t1 = [
       {
         name: 'Test Name',
         description: 'Test Description',
@@ -32,7 +32,7 @@ export class SkillService {
         tier: 1
       }
     ];
-    let t2 = [
+    const t2 = [
       {
         name: 'Test Name',
         description: 'Test Description',
