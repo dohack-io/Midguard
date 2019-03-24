@@ -26,6 +26,11 @@ config.server = {
 config.proxy = {
     settings: [
         {
+            endpointHook: "/inventory_management",
+            proxySetting: httpProxy('http://localhost:1338'),
+            secure: true
+        },
+        {
             endpointHook: "/user_management",
             proxySetting: httpProxy('http://localhost:1339'),
             secure: true
@@ -36,31 +41,9 @@ config.proxy = {
             secure: true
         },
         {
-            endpointHook: "/inventory_management",
-            proxySetting: httpProxy('http://localhost:1338'),
+            endpointHook: "/messenger",
+            proxySetting: httpProxy('http://localhost:1341'),
             secure: true
         }
-        /*
-        {
-            endpointHook: "/sampleUnsecure",
-            proxySetting: httpProxy('http://your.host.com'),
-            secure: false
-        },
-        {
-            endpointHook: "/sampleWithAdditionalPathToHost",
-            proxySetting: httpProxy('http://your.host.com' ,{
-                proxyReqPathResolver: function (req) {
-                  let parts = req.url.split('?');
-                  return "/samplePath" + parts[0] + (parts[1] ? '?' + parts[1] : '');
-                }
-            }),
-            secure: false
-        },
-        {
-            endpointHook: "/sampleSecurePath",
-            proxySetting: httpProxy('http://your.host.com'),
-            secure: true
-        }
-        */
     ]
 };
