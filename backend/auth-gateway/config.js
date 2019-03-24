@@ -29,6 +29,16 @@ config.proxy = {
             endpointHook: "/user_management",
             proxySetting: httpProxy('http://localhost:1339'),
             secure: true
+        },
+        {
+            endpointHook: "/task_management",
+            proxySetting: httpProxy('http://localhost:1340'),
+            secure: true
+        },
+        {
+            endpointHook: "/inventory_management",
+            proxySetting: httpProxy('http://localhost:1338'),
+            secure: true
         }
         /*
         {

@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-all": "cd ./auth-gateway; npm i; echo TODO: generic install script; exit 0;",
-    "start": "npx pm2 start ./auth-gateway/src/server.js; exit 0;",
-    "stop": "npx pm2 stop ./auth-gateway/src/server.js; exit 0;"
+    "install-all": "echo TODO: generic install script; exit 0;",
+    "start": "npx pm2 start",
+    "stop": "npx pm2 stop all"
   },
   "author": "Steffen Osterburg",
   "license": "MIT",

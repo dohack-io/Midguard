@@ -1,4 +1,5 @@
 const db = require('../services/database'),
+    Sequelize = require('sequelize'),
     User = require('../models/user');
 
 
@@ -37,6 +38,52 @@ UserController.createNewUser = function (req, res) {
             res.status(403).json({message: error});
         });
     }
+};
+
+UserController.updateLevel = function (rep, res) {
+    User.update(
+        {level: Sequelize.literal('level + 1')},
+        {where: {id: req.params.id}})
+        .then(function (rowsUpdated) {
+            res.json(rowsUpdated)
+        }).catch(next);
+};
+
+UserController.updateCommunity = function (rep, res) {
+    User.update(
+        {communityId: req.body.communityId},
+        {where: {id: req.params.id}})
+        .then(function (rowsUpdated) {
+            res.json(rowsUpdated)
+        }).catch(next);
+};
+
+UserController.withdrawCredits = function (rep, res) {
+    User.update(
+        {credits: Sequelize.literal('credits - ' + req.body.amount)},
+        {where: {id: req.params.id}})
+        .then(res.status(200).send({message: "succes"})).catch(next);
+};
+
+UserController.depositCredits = function (rep, res) {
+    User.update(
+        {credits: Sequelize.literal('credits + ' + req.body.amount)},
+        {where: {id: req.params.id}})
+        .then(res.status(200).send({message: "succes"})).catch(next);
+};
+
+UserController.updateSkillPoints = function (rep, res) {
+    User.update(
+        {skillPoints:Sequelize.literal('skillPoints + ' + req.body.amount)},
+        {where: {id: req.params.id}})
+        .then(res.status(200).send({message: "succes"})).catch(next);
+};
+
+UserController.updateOfferedItems = function (req, res) {
+    User.setOfferedItems(
+        {communityId: req.body.offeredItems},
+        {where: {id: req.params.id}});
+    res.status(200).send({message: "succes"});
 };
 
 module.exports = UserController;

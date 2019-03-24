@@ -3,7 +3,7 @@ let config = module.exports;
 config.db = {
     user: 'root',
     password: '',
-    name: 'user_management'
+    name: 'task'
 };
 
 config.db.details = {
@@ -13,6 +13,6 @@ config.db.details = {
 };
 
 config.server = {
-    port: 1339,
+    port: 1340,
     url: "localhost"
 };

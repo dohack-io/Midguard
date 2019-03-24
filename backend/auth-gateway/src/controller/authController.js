@@ -45,8 +45,8 @@ AuthController.login = function (req, res) {
                 user.comparePasswords(password, (error, isMatch) => {
                     console.log(user);
                     if (isMatch && !error) {
-                        let token = generateAccessToken(user.id, user.email, 'local');
-                        res.json({success: true, token: "jwt " + token});
+                        let token = generateAccessToken(user.id, user.email,'local');
+                        res.json({success: true, token: "jwt " + token, username: user.username});
                     } else {
                         res.status(404).json({message: 'Login failed!'});
                     }
