@@ -40,12 +40,25 @@ div.search {
   position: relative;
 }
 
+input[type='text'],
+input[type='password'] {
+  background: url('assets/button_outline.png');
+  width: 258px;
+  height: 44px;
+  border: none;
+  color: $text-color-light;
+  outline: none;
+  padding: 0 29px;
+}
+
 input.search {
   padding: 0 29px 0 58px;
 }
 
 input:active,
 input[type='search']:focus,
+input[type='text']:focus,
+input[type='password']:focus,
 input:hover {
   background: url('assets/button_outline_highlighted.png');
   outline: none;
