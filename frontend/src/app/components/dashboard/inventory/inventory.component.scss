@@ -1,21 +1,59 @@
-.title {
-  font-size: 50px;
-  color: white;
+@import '../../../../variables';
+
+.wrapper {
   text-align: center;
-  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-  p-button {
-    position: absolute;
-    top: 70px;
-    right: 2vw;
+  margin-bottom: 2rem;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+.tab-menu {
+  position: relative;
+}
+
+input[type='submit'].buy {
+  width: 260px;
+  height: 44px;
+  background: url('../../../../assets/sell_buy_02.png');
+  position: relative;
+}
+
+input[type='submit'].sell {
+  width: 260px;
+  height: 44px;
+  background: url('../../../../assets/sell_buy_01.png');
+  position: relative;
+}
+
+.tab-menu span {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 130px;
+  line-height: 44px;
+  color: $graphic-element;
+
+  &#sell {
+    left: calc(50% - 130px);
+  }
+
+  &#buy {
+    left: 50%;
+  }
+
+  &.active {
+    color: $text-color-light;
   }
 }
 
-.search-bar {
-  text-align: center;
-  margin-top: 30px;
-  input {
-    border: 1px solid green;
-  }
+.magnifier {
+  position: absolute;
+  top: 10px;
+  // 258px: button outline
+  // 29px: offset to button border
+  left: calc(((100% - 258px) / 2) + 29px);
 }
 
 .tab-menu {
@@ -27,12 +65,75 @@
   }
 }
 
+.inventory-content-wrapper {
+  margin-top: 20px;
+}
+
 .inventory-content {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.inventory-item {
+  display: inline-block;
+  padding: 30px 20px;
+  text-align: center;
+  width: 50%;
+  max-width: 200px;
+  position: relative;
+
+  &.border-top {
+    border-top: 2px solid $graphic-element;
+  }
+
+  &.border-right {
+    border-right: 2px solid $graphic-element;
+  }
+
+  div.square {
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    transform-origin: center center;
+    content: '';
+    border: 2px solid $graphic-element;
+    background-color: $background-color;
+  }
+
+  div.square-top {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    z-index: 998;
+  }
+
+  div.square-bottom {
+    position: absolute;
+    bottom: -5px;
+    right: -6px;
+    z-index: 998;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+  }
+
+  img.credits {
+    display: inline;
+    width: 24px;
+    height: 24px;
+    vertical-align: sub;
+  }
+}
+
+.item-details label {
+  display: block;
+  font-size: 24px;
 }
 
 p-card {

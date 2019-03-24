@@ -3,6 +3,13 @@
   "items": [
     {"id": 1, "name": "Food", "amount": 50, "icon": "food.png"},
     {"id": 2, "name": "Metal", "amount": 5, "icon": "metal.png"},
-    {"id": 3, "name": "Wood", "amount": 3, "icon": "wood.png"}
+    {"id": 3, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 4, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 5, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 6, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 7, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 8, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 9, "name": "Wood", "amount": 3, "icon": "wood.png"},
+    {"id": 10, "name": "Wood", "amount": 3, "icon": "wood.png"}
   ]
 }

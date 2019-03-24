@@ -1,25 +1,22 @@
 <div class="login-card">
-  <p-card header="Login">
-    <form (submit)="login()">
-      <input
-        pInputText
-        type="text"
-        placeholder="Username"
-        required
-        [(ngModel)]="user"
-        name="Username"
-      />
-      <div></div>
-      <input
-        pInputText
-        type="password"
-        placeholder="Password"
-        required
-        [(ngModel)]="password"
-        name="Password"
-      />
-      <div></div>
-      <button pButton type="submit" label="Login"></button>
-    </form>
-  </p-card>
+  <h1>Login</h1>
+  <form (submit)="login()">
+    <input
+      type="text"
+      placeholder="Username"
+      required
+      [(ngModel)]="user"
+      name="Username"
+    />
+
+    <input
+      type="password"
+      placeholder="Password"
+      required
+      [(ngModel)]="password"
+      name="Password"
+    />
+
+    <input type="submit" class="button" value="Login" />
+  </form>
 </div>

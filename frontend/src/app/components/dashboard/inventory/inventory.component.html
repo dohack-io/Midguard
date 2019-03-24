@@ -1,38 +1,75 @@
-<div class="title">
-  <label>{{ selectedTab }}</label>
-  <p-button [label]="tradeBtnText" (click)="toggleTrade()"></p-button>
-</div>
-
-<div class="tab-menu" *ngIf="displayTradeTabs">
-  <p-button [label]="'Sell'" (onClick)="tabSelected('Sell')"></p-button>
-  <p-button [label]="'Buy'" (onClick)="tabSelected('Buy')"></p-button>
-</div>
-
-<div class="search-bar">
+<div class="wrapper">
+  <img src="../../../../assets/fill_icon.png" alt="placeholder" />
+  <h1>{{ selectedTab === 'Inventory' ? 'INVENTORY' : 'TRADE' }}</h1>
   <input
-    placeholder="Search"
-    type="text"
-    pInputText
-    [(ngModel)]="searchStr"
-    (ngModelChange)="search()"
+    type="submit"
+    (click)="toggleTrade()"
+    class="button"
+    [value]="
+      selectedTab === 'Inventory' ? 'SWITCH TO TRADE' : 'SWITCH TO INVENTORY'
+    "
   />
-</div>
+  <div class="search">
+    <input
+      type="search"
+      class="search"
+      placeholder="SEARCH"
+      [(ngModel)]="searchStr"
+      (ngModelChange)="search()"
+    />
+    <img
+      class="magnifier"
+      src="../../../../assets/magnifier.png"
+      alt="SEARCH"
+      name="searchStr"
+    />
+  </div>
 
-<div class="inventory-content">
-  <p-card *ngFor="let item of displayedInventory" (click)="clickedItem(item)">
-    <p-header>
-      <label>{{ item.name }}</label>
-    </p-header>
-    <div class="card-content">
-      <img src="../../../assets/{{ item.icon }}" />
+  <div class="tab-menu" *ngIf="displayTradeTabs">
+    <span id="sell" [ngClass]="{ active: selectedTab === 'Sell' }">SELL</span>
+    <span id="buy" [ngClass]="{ active: selectedTab === 'Buy' }">BUY</span>
+    <input
+      type="submit"
+      (click)="toggleTab()"
+      [ngClass]="{ buy: selectedTab === 'Buy', sell: selectedTab === 'Sell' }"
+      value=""
+    />
+  </div>
+
+  <div class="inventory-content-wrapper">
+    <div class="inventory-content">
+      <ng-container *ngFor="let item of displayedInventory; index as i">
+        <div
+          (click)="clickedItem(item)"
+          [ngClass]="{
+            'inventory-item': true,
+            'border-right': i % 2 === 0,
+            'border-top': i >= 2
+          }"
+        >
+          <img src="../../../../assets/{{ item.icon }}" alt="ITEM" />
+          <label>{{ item.name }}</label>
+          <div class="item-details">
+            <label *ngIf="selectedTab != 'Buy'">{{ item.amount }}x</label>
+            <label *ngIf="selectedTab != 'Inventory'">
+              {{ getPrice(item) }}
+              <img class="credits" src="../../../../assets/credits.png" />
+            </label>
+          </div>
+          <div *ngIf="i % 2 === 0" class="square square-top"></div>
+          <div
+            *ngIf="i >= displayedInventory.length - 2 && i % 2 === 0"
+            class="square square-bottom"
+          ></div>
+        </div>
+        <div
+          *ngIf="i === displayedInventory.length - 1 && i % 2 === 0 && i > 1"
+          class="inventory-item border-top"
+        ></div>
+        <br *ngIf="i % 2 === 1" />
+      </ng-container>
     </div>
-    <p-footer>
-      <label *ngIf="selectedTab != 'Buy'">{{ item.amount }} </label>
-      <label *ngIf="selectedTab != 'Inventory'"
-        >Price: {{ getPrice(item) }}</label
-      >
-    </p-footer>
-  </p-card>
+  </div>
 </div>
 
 <p-dialog
