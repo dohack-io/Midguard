@@ -27,7 +27,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   displayedConvs: Conversation[];
 
   searchStr: string;
-  messageToSend: string = '';
+  messageToSend = '';
 
   selectedConv: Conversation;
   displayChat = false;
@@ -35,7 +35,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   $destroy = new Subject<void>();
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(user => (this.user = user));
+    this.user = this.userService.getUser();
     this.conversations = this.chatService.getConversationsOfUser(this.user.id);
     this.displayedConvs = this.conversations;
 
@@ -46,9 +46,11 @@ export class MessageComponent implements OnInit, OnDestroy {
         switchMap(params => params.id)
       )
       .subscribe(id => {
-        this.selectedConv = this.chatService.getConversationById(id);
+        this.selectedConv = this.chatService.getConversationById(Number(id));
         this.displayChat = true;
-        if (this.selectedConv.messages.length != 0) this.scrollToLastMessage();
+        if (this.selectedConv && this.selectedConv.messages.length !== 0) {
+          this.scrollToLastMessage();
+        }
       });
   }
 
@@ -78,9 +80,11 @@ export class MessageComponent implements OnInit, OnDestroy {
   }
 
   sendMessage() {
-    if (this.messageToSend == '') return;
-    //MOCK
-    let m = new Message();
+    if (this.messageToSend === '') {
+      return;
+    }
+    // MOCK
+    const m = new Message();
     m.id = 999;
     m.content = this.messageToSend;
     m.authorId = this.user.id;
@@ -91,7 +95,9 @@ export class MessageComponent implements OnInit, OnDestroy {
   }
 
   checkUnread(conv: Conversation): string {
-    if (conv.unread) return 'row unread';
+    if (conv.unread) {
+      return 'row unread';
+    }
     return 'row';
   }
 

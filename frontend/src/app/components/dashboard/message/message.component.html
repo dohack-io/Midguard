@@ -1,60 +1,67 @@
-<div class="all-messages" *ngIf="!displayChat">
-  <div class="title">
-    <label>Messages</label>
-  </div>
-  <div class="search-bar">
-    <input
-      placeholder="Username"
-      type="text"
-      pInputText
-      [(ngModel)]="searchStr"
-      (ngModelChange)="search()"
-    />
-  </div>
-  <div class="message-container">
-    <div
-      *ngFor="let c of displayedConvs"
-      (click)="showConversation(c)"
-      [className]="checkUnread(c)"
-    >
-      <div class="profile-picture">
-        <img src="../../../../assets/person_placeholder.png" />
-      </div>
-      <div class="name">
-        <label>{{ c.partnerName }}</label>
-      </div>
-      <div class="message-preview">
-        <label>{{ c.messages[c.messages.length - 1]?.content }}</label>
-      </div>
+<div class="wrapper">
+  <div class="all-messages" *ngIf="!displayChat">
+    <img src="../../../../assets/fill_icon.png" alt="placeholder" />
+    <h1>Messages</h1>
+
+    <div class="search">
+      <input
+        type="search"
+        class="search"
+        placeholder="SEARCH"
+        [(ngModel)]="searchStr"
+        (ngModelChange)="search()"
+        name="search"
+      />
+      <img
+        class="magnifier"
+        src="../../../../assets/magnifier.png"
+        alt="SEARCH"
+      />
+    </div>
+
+    <div class="message-container">
+      <ng-container *ngFor="let c of displayedConvs; index as i">
+        <div (click)="showConversation(c)" [className]="checkUnread(c)">
+          <div class="profile-picture">
+            <img src="../../../../assets/fill_icon.png" alt="placeholder" />
+          </div>
+          <div class="name">{{ c.partnerName }}</div>
+          <div class="message-preview">
+            {{ c.messages[c.messages.length - 1]?.content }}
+          </div>
+        </div>
+
+        <app-separator *ngIf="i < displayedConvs.length - 1"></app-separator>
+      </ng-container>
     </div>
   </div>
-</div>
 
-<div class="chat-history" *ngIf="displayChat">
-  <div class="sub-title">
-    <label>{{ selectedConv.partnerName }}</label>
-  </div>
-  <div class="chat-container">
-    <p-scrollPanel [style]="{ width: '100%', height: '70vh' }">
-      <div class="spacing"></div>
-      <div *ngFor="let m of selectedConv.messages" id="{{ m.id }}">
-        <div class="self" *ngIf="m.authorId == user.id">
-          <label>{{ m.content }}</label>
+  <div class="chat-history" *ngIf="displayChat">
+    <div class="sub-title">
+      <label>{{ selectedConv?.partnerName }}</label>
+    </div>
+    <div class="chat-container">
+      <p-scrollPanel [style]="{ width: '100%', height: '70vh' }">
+        <div class="spacing"></div>
+        <div *ngFor="let m of selectedConv?.messages" id="{{ m.id }}">
+          <div class="self" *ngIf="m.authorId == user.id">
+            <label>{{ m.content }}</label>
+          </div>
+          <div class="partner" *ngIf="m.authorId != user.id">
+            <label>{{ m.content }}</label>
+          </div>
         </div>
-        <div class="partner" *ngIf="m.authorId != user.id">
-          <label>{{ m.content }}</label>
-        </div>
-      </div>
-    </p-scrollPanel>
-  </div>
-  <div class="chat-input">
-    <input
-      type="text"
-      pInputText
-      placeholder="Message"
-      (keyup.enter)="sendMessage()"
-      [(ngModel)]="messageToSend"
-    />
-    <p-button label="SEND" (click)="sendMessage()"></p-button>
+      </p-scrollPanel>
+    </div>
+    <div class="chat-input">
+      <input
+        type="text"
+        pInputText
+        placeholder="Message"
+        (keyup.enter)="sendMessage()"
+        [(ngModel)]="messageToSend"
+      />
+      <p-button label="SEND" (click)="sendMessage()"></p-button>
+    </div>
   </div>
 </div>
