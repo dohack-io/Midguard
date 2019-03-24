@@ -4,6 +4,7 @@ const express = require('express'),
     cors = require('cors'),
     socketIO = require('socket.io'),
     config = require('./config'),
+    db = require('./src/services/database'),
     messengerSocket = require('./src/messengerSocket');
 
 
@@ -12,6 +13,9 @@ let app = express(),
     io = socketIO(server);
 
 app.use(cors());
+
+// Init database
+db.sync().catch(((err) => console.log(err)));
 
 messengerSocket(io);
 
