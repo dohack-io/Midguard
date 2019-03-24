@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MenuItem} from "primeng/api";
-import {Contract} from "../../../entities/Contract";
-import {ContractService} from "../../../services/contractService";
-import {UserService} from "../../../services/userService";
-import {User} from "../../../entities/User";
-import {Router} from "@angular/router";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+import { Contract } from '../../../entities/Contract';
+import { ContractService } from '../../../services/contractService';
+import { UserService } from '../../../services/userService';
+import { User } from '../../../entities/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contract',
@@ -12,10 +12,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./contract.component.scss']
 })
 export class ContractComponent implements OnInit {
-
-  constructor(private contractService: ContractService,
-              private userService: UserService,
-              private router: Router) { }
+  constructor(
+    private contractService: ContractService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   @ViewChild('tabMenu') menu: MenuItem[];
   tabs: MenuItem[];
@@ -26,14 +27,15 @@ export class ContractComponent implements OnInit {
   placedContracts: Contract[];
 
   ngOnInit() {
-    this.tabs = [
-      {label: 'Received'},
-      {label: 'Placed'}
-      ];
+    this.tabs = [{ label: 'Received' }, { label: 'Placed' }];
     this.selectedTab = this.tabs[0];
-    this.user = this.userService.getUser();
-    this.receivedContracts = this.contractService.getReceivedContractsOfUser(this.user.id);
-    this.placedContracts = this.contractService.getPlacedContractsOfUser(this.user.id);
+    this.userService.getUser().subscribe(user => (this.user = user));
+    this.receivedContracts = this.contractService.getReceivedContractsOfUser(
+      this.user.id
+    );
+    this.placedContracts = this.contractService.getPlacedContractsOfUser(
+      this.user.id
+    );
   }
 
   tabChanged(): void {
@@ -45,8 +47,7 @@ export class ContractComponent implements OnInit {
   }
 
   checkAccepted(contract: Contract): string {
-    if(contract.accepted)
-      return " row accepted";
-    return "row"
+    if (contract.accepted) return ' row accepted';
+    return 'row';
   }
 }

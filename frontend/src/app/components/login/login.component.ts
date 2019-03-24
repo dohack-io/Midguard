@@ -17,9 +17,9 @@ export class LoginComponent {
     this.userService.login(this.user, this.password).subscribe(
       response => {
         if (response.success) {
-          this.router.navigate(['/dashboard/overview']);
           localStorage.setItem('jwt', response.token);
-          console.log(localStorage.getItem('jwt'));
+          this.router.navigate(['/dashboard/overview']);
+          localStorage.setItem('currentUser', response.username);
         }
       },
       error => console.log('wrong login')

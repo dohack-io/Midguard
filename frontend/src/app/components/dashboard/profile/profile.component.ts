@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   user: User;
+  actualUser: User;
   profileItems: Item[] = [];
   allItems: Item[] = [];
   allDisplayedItems: Item[] = [];
@@ -33,6 +34,7 @@ export class ProfileComponent implements OnInit {
   $destroy = new Subject<void>();
 
   ngOnInit(): void {
+    this.userService.getUser().subscribe(user => (this.actualUser = user));
     this.route.params
       .pipe(
         takeUntil(this.$destroy),
@@ -49,7 +51,7 @@ export class ProfileComponent implements OnInit {
 
   sendMessage() {
     let chatId = this.chatService.startNewConversation(
-      this.userService.getUser().id,
+      this.actualUser.id,
       this.user.id
     );
     this.router.navigate(['/dashboard/message/', chatId]);

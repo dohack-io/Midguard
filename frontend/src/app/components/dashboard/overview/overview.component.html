@@ -8,23 +8,23 @@
       value="VIEW AVAILABLE TASKS"
     />
 
-    <ng-container *ngIf="user.taskId !== 0 && !taskIsFinished()">
+    <ng-container *ngIf="task && user?.taskId !== 0 && !taskIsFinished()">
       <app-separator type="triangle"></app-separator>
     </ng-container>
 
     <!-- Task in Progress -->
-    <div *ngIf="user.taskId !== 0 && !taskIsFinished()">
+    <div *ngIf="task && user?.taskId !== 0 && !taskIsFinished()">
       <div class="progress-container">
         <img [src]="progressPath" alt="taskProgress" />
         <img [src]="taskImagePath" alt="task" />
       </div>
       <div class="spacing"></div>
-      <label>{{ task.name }}</label>
+      <label>{{ task?.name }}</label>
       <div class="spacing"></div>
       <label>Completed in: {{ taskTime }}</label>
       <div></div>
       <label>
-        Reward: {{ task.reward[0].amount }} {{ task.reward[0].name }}
+        Reward: {{ (task?.reward)[0]?.amount }} {{ (task?.reward)[0]?.name }}
       </label>
       <div class="spacing"></div>
       <input
@@ -100,8 +100,11 @@
   *ngIf="task"
 >
   <div class="reward-content" align="center">
-    <img src="../../../assets/{{ task.reward[0].icon }}" />
+    <img
+      *ngIf="(task?.reward)[0]"
+      src="../../../assets/{{ (task?.reward)[0]?.icon }}"
+    />
     <div class="spacing"></div>
-    <label>{{ task.reward[0].amount }} {{ task.reward[0].name }}</label>
+    <label>{{ (task?.reward)[0]?.amount }} {{ (task?.reward)[0]?.name }}</label>
   </div>
 </p-dialog>
