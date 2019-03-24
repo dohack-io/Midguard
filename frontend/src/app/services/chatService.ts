@@ -14,7 +14,7 @@ export class ChatService {
     return this.conversations;
   }
 
-  getConversationById(id: any): Conversation {
+  getConversationById(id: number): Conversation {
     for (const c of this.conversations) {
       if (c.id === id) {
         return c;
