@@ -4,7 +4,6 @@ const express = require('express'),
     cors = require('cors'),
     socketIO = require('socket.io'),
     config = require('./config'),
-    db = require('./src/services/database'),
     messengerSocket = require('./src/messengerSocket');
 
 

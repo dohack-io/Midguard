@@ -35,7 +35,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   $destroy = new Subject<void>();
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
+    this.userService.getUser().subscribe(user => (this.user = user));
     this.conversations = this.chatService.getConversationsOfUser(this.user.id);
     this.displayedConvs = this.conversations;
 

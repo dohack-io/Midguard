@@ -82,6 +82,7 @@ export class TaskService {
           Object.assign(t, task);
           t.reward = [];
           t.required = [];
+          if (!task) return of(t);
           let subs: Observable<any>[] = [];
           for (const r of task.reward) {
             subs.push(
@@ -130,12 +131,23 @@ export class TaskService {
     this.timeReduction = 0;
   }
 
-  cancelTask() {
-    // TODO: Call server to drop the Task id
+  cancelTask(userId: number) {
     this.taskTimer = null;
     this.timeReduction = 0;
     this.taskCompleted.next(false);
     this.taskAnnouncer.next('Task Canceled');
+    this.http
+      .post(
+        `http://localhost:1337/api/task_management/task/cancelTask/${userId}`,
+        null,
+        {
+          headers: new HttpHeaders({
+            Authorization: localStorage.getItem('jwt')
+          })
+        }
+      )
+      .subscribe();
+    console.log('test');
   }
 
   getAllTasks(profession: string, uId: number): Observable<Task[]> {

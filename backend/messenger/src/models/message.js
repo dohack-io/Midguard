@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize"),
-    db = require ('./../services/database');
+    db = require('./../services/database');
 
 // message model
 const MessageModel = db.define('message', {

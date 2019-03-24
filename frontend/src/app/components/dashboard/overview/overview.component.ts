@@ -55,7 +55,7 @@ export class OverviewComponent implements OnInit {
   }
 
   cancelTask() {
-    this.taskService.cancelTask();
+    this.taskService.cancelTask(this.user.id);
     this.user.taskId = 0;
     this.userService.setTask(0);
     this.taskStreamStop.next(true);

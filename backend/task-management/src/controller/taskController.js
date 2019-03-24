@@ -34,7 +34,7 @@ TaskController.setTaskOfUser = function (req, res) {
             duration: task.duration, icon: task.icon, profession: task.profession,
             startTime: new Date(), userID: req.params.userID};
         RunningTask.create(rTask);
-        res.status(200).send("Task Changed");
+        res.status(200).send({message: "Task Changed"});
     });
 };
 

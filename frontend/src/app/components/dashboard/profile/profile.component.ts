@@ -62,7 +62,7 @@ export class ProfileComponent implements OnInit {
   }
 
   isOwnProfile() {
-    return this.user.id == this.userService.getUser().id;
+    return this.user.id == this.actualUser.id;
   }
 
   editProfile() {

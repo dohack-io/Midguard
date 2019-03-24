@@ -37,7 +37,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Get Data
-    this.userService.getUser().subscribe(user => (this.user = user));
+    this.userService.getUser().subscribe(user => {
+      this.user = user;
+    });
     // Get Announcer for Push Notifications
     this.taskService
       .getTaskAnnouncer()

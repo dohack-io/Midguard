@@ -47,10 +47,11 @@ export class UserService {
           this.user.taskId = 0;
           this.user.taskStart = null;
           return this.taskService.getTaskIdOfUser(this.user.id).pipe(
-            filter(task => !!task),
             switchMap(task => {
-              this.user.taskId = task.id;
-              this.user.taskStart = task.startTime;
+              if (task) {
+                this.user.taskId = task.id;
+                this.user.taskStart = task.startTime;
+              }
               return of(this.user);
             })
           );
@@ -73,7 +74,7 @@ export class UserService {
       `http://localhost:1337/api/task_management/task/setTask/${
         this.user.id
       }/${taskId}`,
-      null,
+      JSON.stringify({}),
       {
         headers: new HttpHeaders({ Authorization: localStorage.getItem('jwt') })
       }

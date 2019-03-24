@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {User} from "../../../entities/User";
-import {UserService} from "../../../services/userService";
-import {SkillService} from "../../../services/skillService";
-import {Skill} from "../../../entities/Skill";
-import {MenuItem} from "primeng/primeng";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { User } from '../../../entities/User';
+import { UserService } from '../../../services/userService';
+import { SkillService } from '../../../services/skillService';
+import { Skill } from '../../../entities/Skill';
+import { MenuItem } from 'primeng/primeng';
 
 @Component({
   selector: 'app-skill-tree',
@@ -11,7 +11,6 @@ import {MenuItem} from "primeng/primeng";
   styleUrls: ['./skill-tree.component.scss']
 })
 export class SkillTreeComponent implements OnInit {
-
   user: User;
   profSkills: Skill[][];
 
@@ -19,24 +18,27 @@ export class SkillTreeComponent implements OnInit {
   @ViewChild('tabMenu') menu: MenuItem[];
   tabs: MenuItem[];
 
-  constructor(private userService: UserService,
-              private skillService: SkillService) {
-  }
+  constructor(
+    private userService: UserService,
+    private skillService: SkillService
+  ) {}
 
   ngOnInit(): void {
     this.tabs = [
-      {label: 'Provider'},
-      {label: 'Scientist'},
-      {label: 'Engineer'},
-      {label: 'Security'}
+      { label: 'Provider' },
+      { label: 'Scientist' },
+      { label: 'Engineer' },
+      { label: 'Security' }
     ];
     this.selectedTab = this.tabs[0];
     this.profSkills = this.skillService.getSkillByProfession('Provider');
-    this.user = this.userService.getUser();
+    this.userService.getUser().subscribe(user => (this.user = user));
   }
 
   tabChanged(): void {
     this.selectedTab = this.menu['activeItem'];
-    this.profSkills = this.skillService.getSkillByProfession(this.selectedTab.label);
+    this.profSkills = this.skillService.getSkillByProfession(
+      this.selectedTab.label
+    );
   }
 }
