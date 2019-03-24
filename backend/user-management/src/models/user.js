@@ -33,6 +33,6 @@ let UserModel = db.define('User', {
         },
         defaultValue: ''
     }
-});
+}, {timestamps: false});
 
 module.exports = UserModel;

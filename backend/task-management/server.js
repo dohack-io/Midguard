@@ -15,4 +15,4 @@ app.use('/task', require('./src/routes/taskRoute'));
 
 app.get('*', (req, res) => res.status(404).send("404: Not Found") );
 
-app.listen(config.server.port, () => console.log('Gateway running on' + config.server.url + config.server.port + '!'));
+app.listen(config.server.port, () => console.log('Service running on' + config.server.url + ':' + config.server.port + '!'));

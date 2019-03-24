@@ -2,8 +2,8 @@ let config = module.exports;
 
 config.db = {
     user: 'root',
-    password: '',
-    name: 'inventory'
+    password: 'root',
+    name: 'inventory_management'
 };
 
 config.db.details = {
