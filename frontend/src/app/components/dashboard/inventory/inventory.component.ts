@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../../services/userService";
-import {InventoryService} from "../../../services/inventoryService";
-import {User} from "../../../entities/User";
-import {Inventory} from "../../../entities/Inventory";
-import {Observable, of} from "rxjs";
-import {Item} from "../../../entities/Item";
+import { Component, OnInit } from '@angular/core';
+import { Inventory } from '../../../entities/Inventory';
+import { Item } from '../../../entities/Item';
+import { User } from '../../../entities/User';
+import { InventoryService } from '../../../services/inventoryService';
+import { UserService } from '../../../services/userService';
 
 @Component({
   selector: 'app-inventory',
@@ -12,22 +11,20 @@ import {Item} from "../../../entities/Item";
   styleUrls: ['./inventory.component.scss']
 })
 export class InventoryComponent implements OnInit {
-
-  constructor(private userService: UserService,
-              private inventoryService: InventoryService
-  ) {
-  }
+  constructor(
+    private userService: UserService,
+    private inventoryService: InventoryService
+  ) {}
 
   user: User;
   inventory: Inventory;
   displayedInventory: Item[];
 
-  searchStr = "";
+  searchStr = '';
   suggestions = [];
 
   displayTradeTabs = false;
-  selectedTab = "Inventory";
-  tradeBtnText = "Trade";
+  selectedTab = 'Inventory';
 
   sellItem: Item;
   buyItem: Item;
@@ -46,34 +43,40 @@ export class InventoryComponent implements OnInit {
   }
 
   search() {
-    if (this.selectedTab != "Buy" ) {
-      this.suggestions = this.getItemNames().filter((str: string) => str.toLowerCase().includes(this.searchStr.toLowerCase()));
+    if (this.selectedTab !== 'Buy') {
+      this.suggestions = this.getItemNames().filter((str: string) =>
+        str.toLowerCase().includes(this.searchStr.toLowerCase())
+      );
       this.inventory = this.inventoryService.getInventory();
-      this.displayedInventory = this.inventory.items.filter(
-        (item) => item.name.toLowerCase().includes(this.searchStr.toLowerCase()));
+      this.displayedInventory = this.inventory.items.filter(item =>
+        item.name.toLowerCase().includes(this.searchStr.toLowerCase())
+      );
     } else {
-      this.suggestions = this.getItemNames().filter((str: string) => str.toLowerCase().includes(this.searchStr.toLowerCase()));
-      this.displayedInventory = this.inventoryService.getBuyInventory().items.filter(
-        (item) => item.name.toLowerCase().includes(this.searchStr.toLowerCase()));
+      this.suggestions = this.getItemNames().filter((str: string) =>
+        str.toLowerCase().includes(this.searchStr.toLowerCase())
+      );
+      this.displayedInventory = this.inventoryService
+        .getBuyInventory()
+        .items.filter(item =>
+          item.name.toLowerCase().includes(this.searchStr.toLowerCase())
+        );
     }
   }
 
   toggleTrade() {
-    if (this.selectedTab == "Inventory") {
-      this.selectedTab = "Sell";
+    if (this.selectedTab === 'Inventory') {
+      this.selectedTab = 'Sell';
       this.displayTradeTabs = true;
-      this.tradeBtnText = "Cancel";
       this.search();
     } else {
-      this.selectedTab = "Inventory";
+      this.selectedTab = 'Inventory';
       this.displayTradeTabs = false;
-      this.tradeBtnText = "Trade";
       this.search();
     }
   }
 
-  tabSelected(tab: string) {
-    this.selectedTab = tab;
+  toggleTab() {
+    this.selectedTab = this.selectedTab === 'Buy' ? 'Sell' : 'Buy';
     this.search();
   }
 
@@ -82,8 +85,8 @@ export class InventoryComponent implements OnInit {
   }
 
   clickedItem(item: Item) {
-    if(this.selectedTab != "Inventory") {
-      if(this.selectedTab == "Sell") {
+    if (this.selectedTab !== 'Inventory') {
+      if (this.selectedTab === 'Sell') {
         this.sellItem = item;
         this.displaySellDialog = true;
       } else {
@@ -94,17 +97,25 @@ export class InventoryComponent implements OnInit {
   }
 
   sell() {
-    if(this.tradeAmount > this.sellItem.amount) return;
+    if (this.tradeAmount > this.sellItem.amount) {
+      return;
+    }
     this.inventoryService.sellItem(this.sellItem, this.tradeAmount);
-    this.userService.creditScore(this.getPrice(this.sellItem)*this.tradeAmount);
+    this.userService.creditScore(
+      this.getPrice(this.sellItem) * this.tradeAmount
+    );
     this.search();
     this.displaySellDialog = false;
   }
 
   buy() {
-    if(this.tradeAmount*this.getPrice(this.buyItem) > this.user.credits) return;
+    if (this.tradeAmount * this.getPrice(this.buyItem) > this.user.credits) {
+      return;
+    }
     this.inventoryService.buyItem(this.buyItem, this.tradeAmount);
-    this.userService.creditScore(this.getPrice(this.sellItem)*this.tradeAmount*(-1));
+    this.userService.creditScore(
+      this.getPrice(this.sellItem) * this.tradeAmount * -1
+    );
     this.search();
     this.displayBuyDialog = false;
   }

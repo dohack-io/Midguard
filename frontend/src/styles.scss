@@ -16,13 +16,18 @@ label {
 
 html {
   font-family: Teko, sans-serif;
+  color: $text-color-light;
 }
 
 body {
   margin: 0;
 }
 
-input.button {
+h1 {
+  font-size: 50px;
+}
+
+input {
   background: url('assets/button_outline.png');
   width: 258px;
   height: 44px;
@@ -31,9 +36,18 @@ input.button {
   outline: none;
 }
 
-input.button:active,
-input.button:hover {
-  background: url('assets/button_outline_highlight.png');
+div.search {
+  position: relative;
+}
+
+input.search {
+  padding: 0 29px 0 58px;
+}
+
+input:active,
+input[type='search']:focus,
+input:hover {
+  background: url('assets/button_outline_highlighted.png');
   outline: none;
 }
 
@@ -50,5 +64,5 @@ input.button.button-back {
 
 input.button.button-back:active,
 input.button.button-back:hover {
-  background: url('assets/back_button_highlight.png');
+  background: url('assets/back_button_highlighted.png');
 }
