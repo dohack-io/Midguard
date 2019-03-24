@@ -5,7 +5,7 @@
     </a>
   </div>
   <div class="credit-counter">
-    <label>{{ user.credits }}</label>
+    <label>{{ user?.credits }}</label>
     <img src="../../../assets/credits.png" />
   </div>
 </div>
@@ -20,15 +20,15 @@
       (keyup.enter)="search()"
     />
   </div>
-  <img src="../../../assets/{{ user.icon }}" />
+  <img src="../../../assets/person_placeholder.png" />
   <div class="spacing"></div>
-  <label>{{ user.name }}</label>
+  <label>{{ user?.name }}</label>
   <div class="spacing"></div>
   <p-button label="Public Profile" (onClick)="openPublicProfile()"></p-button>
   <div class="mid-content">
-    <label>Level: {{ user.level }}</label>
+    <label>Level: {{ user?.level }}</label>
     <div class="spacing"></div>
-    <label>Skill Points: {{ user.skillPoints }}</label>
+    <label>Skill Points: {{ user?.skillPoints }}</label>
     <div class="spacing"></div>
     <p-button label="Skill Tree" (onClick)="openSkillTree()"></p-button>
   </div>

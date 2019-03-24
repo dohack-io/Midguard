@@ -37,11 +37,17 @@ export class OverviewComponent implements OnInit {
   currentProgress = 0;
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
-    this.task = this.taskService.getTaskById(this.user.taskId);
-    if (this.user.taskId !== 0 && !this.taskIsFinished()) {
-      this.startTask();
-    }
+    this.userService.getUser().subscribe(user => {
+      this.user = user;
+      if (this.user.taskId !== 0) {
+        this.taskService.getTaskById(this.user.taskId).subscribe(task => {
+          this.task = task;
+          if (this.user.taskId !== 0 && !this.taskIsFinished()) {
+            this.startTask();
+          }
+        });
+      }
+    });
   }
 
   pickNewTask() {
@@ -98,9 +104,13 @@ export class OverviewComponent implements OnInit {
   }
 
   taskIsFinished(): boolean {
-    return (
-      this.task.duration <= this.taskService.getRestTime(this.user.taskStart)
-    );
+    if (this.task) {
+      return (
+        this.task.duration <=
+        this.taskService.getRestTime(new Date(this.user.taskStart))
+      );
+    }
+    return false;
   }
 
   openRewardDialog(img: HTMLImageElement) {

@@ -33,7 +33,7 @@ export class InventoryComponent implements OnInit {
   displayBuyDialog = false;
 
   ngOnInit() {
-    this.user = this.userService.getUser();
+    this.userService.getUser().subscribe(user => (this.user = user));
     this.inventory = this.inventoryService.getInventory();
     this.displayedInventory = this.inventory.items;
   }

@@ -8,5 +8,6 @@ router.get('/serverTime', TaskController.getServerTime);
 router.get('/getTasks/:profession', TaskController.getAllTasksOfProf);
 router.get('/getUserTask/:id', TaskController.getTaskOfUser);
 router.post('/setTask/:userID/:taskID', TaskController.setTaskOfUser);
+router.get('/getRunTaskById/:id', TaskController.getRunningTaskById);
 
 module.exports = router;

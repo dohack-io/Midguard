@@ -34,7 +34,12 @@ TaskController.setTaskOfUser = function (req, res) {
             duration: task.duration, icon: task.icon, profession: task.profession,
             startTime: new Date(), userID: req.params.userID};
         RunningTask.create(rTask);
+        res.status(200).send("Task Changed");
     });
+};
+
+TaskController.getRunningTaskById = function (req, res) {
+    RunningTask.findByPk(req.params.id).then( task => res.status(200).send(task));
 };
 
 module.exports = TaskController;

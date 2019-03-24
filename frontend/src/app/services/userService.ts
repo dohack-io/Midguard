@@ -1,15 +1,19 @@
 import { User } from '../entities/User';
 import u1 from '../MockData/User.json';
-import { Observable, Subject } from 'rxjs/index';
-import { HttpClient } from '@angular/common/http';
+import { Observable, of, Subject } from 'rxjs/index';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TaskService } from './taskService';
+import { filter, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private taskService: TaskService) {}
 
-  private user: User = u1[0];
+  private user: User;
   private userAnnouncer: Subject<String>;
+
+  private localUrl = 'http://localhost:1337/api/user_management/user/';
 
   login(user: string, password: string): Observable<any> {
     return this.http.post('http://localhost:1337/auth/local/login', {
@@ -26,11 +30,32 @@ export class UserService {
     return this.userAnnouncer;
   }
 
-  getUser(): User {
-    // TODO: Logged in User Object from server
-    // if not set use localstorage
-    // setzte attribute die nicht vom server gesetzt sind
-    return this.user;
+  getUser(): Observable<any> {
+    return this.http
+      .get(this.localUrl + 'name/' + localStorage.getItem('currentUser'), {
+        headers: new HttpHeaders({ Authorization: localStorage.getItem('jwt') })
+      })
+      .pipe(
+        switchMap(user => {
+          this.user = new User();
+          this.user.id = user['id'];
+          this.user.name = user['name'];
+          this.user.level = user['level'];
+          this.user.credits = user['credits'];
+          this.user.skillPoints = user['skillPoints'];
+          this.user.offeredItems = user['offeredItems'];
+          this.user.taskId = 0;
+          this.user.taskStart = null;
+          return this.taskService.getTaskIdOfUser(this.user.id).pipe(
+            filter(task => !!task),
+            switchMap(task => {
+              this.user.taskId = task.id;
+              this.user.taskStart = task.startTime;
+              return of(this.user);
+            })
+          );
+        })
+      );
   }
 
   getUserById(id: number): User {
@@ -44,10 +69,19 @@ export class UserService {
     if (taskId !== 0) {
       this.userAnnouncer.next('New Task started');
     }
+    return this.http.post(
+      `http://localhost:1337/api/task_management/task/setTask/${
+        this.user.id
+      }/${taskId}`,
+      null,
+      {
+        headers: new HttpHeaders({ Authorization: localStorage.getItem('jwt') })
+      }
+    );
   }
 
   creditScore(score: number) {
-    this.getUser().credits += score;
+    this.user.credits += score;
   }
 
   removeProfileItem(id: number) {

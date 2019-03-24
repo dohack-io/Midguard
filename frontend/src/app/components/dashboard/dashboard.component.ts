@@ -37,16 +37,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Get Data
-    this.user = this.userService.getUser();
+    this.userService.getUser().subscribe(user => (this.user = user));
     // Get Announcer for Push Notifications
     this.taskService
       .getTaskAnnouncer()
       .pipe(takeUntil(this.$destroy))
       .subscribe(message => {
-        return this.messageService.add({
-          severity: 'success',
-          summary: message,
-          detail: this.taskService.getTaskById(this.user.taskId).name
+        this.taskService.getTaskById(this.user.taskId).subscribe(task => {
+          this.messageService.add({
+            severity: 'success',
+            summary: message,
+            detail: task.name
+          });
         });
       });
     this.userService
@@ -55,8 +57,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(message =>
         this.messageService.add({
           severity: 'success',
-          summary: message.toString(),
-          detail: this.taskService.getTaskById(this.user.taskId).name
+          summary: message.toString()
         })
       );
     this.inventoryService
@@ -72,17 +73,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   // Only show Back Button when you are not on Overview
   displayBack() {
-    if (this.router.url === '/dashboard/overview') return false;
-    return true;
+    return this.router.url !== '/dashboard/overview';
   }
 
   returnToOverview() {
     // Return to Map from Game Modules
     if (
-      this.router.url == '/dashboard/crackCode' ||
-      this.router.url == '/dashboard/quiz' ||
-      this.router.url == '/dashboard/minesweeper' ||
-      this.router.url == '/dashboard/battle'
+      this.router.url === '/dashboard/crackCode' ||
+      this.router.url === '/dashboard/quiz' ||
+      this.router.url === '/dashboard/minesweeper' ||
+      this.router.url === '/dashboard/battle'
     ) {
       this.router.navigate(['/dashboard/map']);
     } else if (this.router.url.includes('/dashboard/message/')) {
@@ -91,7 +91,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.router.navigate(['/dashboard/contracts']);
     }
     // Return to Overview
-    else this.router.navigate(['/dashboard/overview']);
+    else {
+      this.router.navigate(['/dashboard/overview']);
+    }
   }
 
   // Sidebar Navigation Methods

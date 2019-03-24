@@ -56,5 +56,10 @@ ItemController.getBuyInventory = function (req, res) {
     //TODO
 };
 
+ItemController.getInvItemById = function(req, res) {
+    InvItem.findByPk(req.params.id).then( item =>
+    res.status(200).send(item));
+};
+
 
 module.exports = ItemController;
