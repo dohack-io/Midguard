@@ -1,6 +1,7 @@
 const express = require('express'),
     messengerController = require('./src/controller/messengerController'),
     http = require('http'),
+    db = require('./src/services/database'),
     cors = require('cors'),
     socketIO = require('socket.io'),
     config = require('./config'),
