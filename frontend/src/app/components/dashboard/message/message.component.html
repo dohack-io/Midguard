@@ -41,7 +41,7 @@
       <label>{{ selectedConv?.partnerName }}</label>
     </div>
     <div class="chat-container">
-      <p-scrollPanel [style]="{ width: '100%', height: '70vh' }">
+      <p-scrollPanel [style]="{ width: '100%', height: 'calc(100vh - 225px)' }">
         <div class="spacing"></div>
         <div *ngFor="let m of selectedConv?.messages" id="{{ m.id }}">
           <div class="self" *ngIf="m.authorId == user.id">
